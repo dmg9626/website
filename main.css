@@ -10,10 +10,13 @@
   display: inline;
 }
 
+.html body {
+  background-color: #434e5e !important;
+}
+
 .jumbotron {
-  background-image:url('http://goo.gl/04j7Nn');
+  background-color: #434e5e;
   height: 500px;
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -23,27 +26,17 @@
 }
 
 .jumbotron h1 {
-  color: #fff;
+  color: #FFFFFF;
   font-size: 48px;
-  font-family: 'Shift', sans-serif;
+  font-family: 'Cabin', sans-serif;
   font-weight: bold;
+}
+.jumbotron h6 {
+  color: #FFFFFF;
+  
 }
 
 .jumbotron p {
   font-size: 20px;
   color: #fff;
-}
-
-.learn-more {
-  background-color: #f7f7f7;
-}
-
-.learn-more h3 {
-  font-family: 'Shift', sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.learn-more a {
-  color: #00b0ff;
 }
