@@ -1,5 +1,9 @@
+body {
+  background-color: #FFFFFF
+}
+
 .jumbotron {
-  background-color: #434e5e;
+  background-color: #d0d1d3;
   background-size: cover;
 }
 
@@ -9,11 +13,11 @@
   font-weight: bold;
 }
 
-.jumbotron {
-  color: #FFFFFF;
+.game-description .jumbotron {
+  background-color: #e2e6ee;
 }
 
-.game-description {
+.game-description-text {
   font-size: 20px;
   font-family: 'Cabin', sans-serif;
 }
