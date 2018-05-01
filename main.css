@@ -1,19 +1,17 @@
 .html body {
-  background-color: #434e5e !important;
+  background: #434e5e !important;
 }
 
 .jumbotron {
   background-color: #434e5e;
-  height: 500px;
+  background-size: cover;
 }
 
 .jumbotron h1 {
-  color: #FFFFFF;
   font-size: 48px;
   font-family: 'Cabin', sans-serif;
   font-weight: bold;
 }
-.jumbotron h6 {
+.jumbotron {
   color: #FFFFFF;
-  
 }
