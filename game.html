@@ -29,15 +29,50 @@
         <!-- page body -->
         <div class="container">
 
-            <!-- cover image of game -->
-            <div class="row">
-                <div class="col-xs-12">
-                    <img class="game-cover" src="./images/kunt.jpg" >
+            <div class="row" id="cover-image">
+                    <!-- cover image of game -->
+                    <img src="./images/kunt.jpg" class="img-responsive center-block">        
+                    <br/>
+            </div>
+        
+            <!-- grid of thumbnails -->
+            <div class="row" id="thumbnail-grid">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                    <a href="./images/kunt.jpg">
+                        <img src="./images/kunt.jpg" alt="Lights" style="width:100%">
+                        <div class="caption">
+                        <p>Lorem ipsum...</p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                    <a href="./images/kunt.jpg">
+                        <img src="./images/kunt.jpg" alt="Nature" style="width:100%">
+                        <div class="caption">
+                        <p>Lorem ipsum...</p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                    <a href="./images/kunt.jpg">
+                        <img src="./images/kunt.jpg" alt="Fjords" style="width:100%">
+                        <div class="caption">
+                        <p>Lorem ipsum...</p>
+                        </div>
+                    </a>
+                    </div>
                 </div>
             </div>
-            <br/>
+            
 
-            <div class="game-description">
+            <div class="game-description" id="gameDescription">
                 <!-- game description-->
                 <div class="jumbotron">
                     <div class="game-description-text">
@@ -48,7 +83,7 @@
                     </div><br>
                 </div>
             </div>
-            
+          
 
         </div> <!-- end of page body -->
 
