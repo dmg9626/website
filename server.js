@@ -31,6 +31,7 @@ app.get('/getGameData', function(req, res){
 	var name = game.Game.getAttribute(req.query.gameId, "name");
 	var description = game.Game.getAttribute(req.query.gameId, "description");
 	var shortDescription = game.Game.getAttribute(req.query.gameId, "shortDescription");
+	var coverImage = game.Game.getAttribute(req.query.gameId, "coverImage");
 	var images = game.Game.getAttribute(req.query.gameId, "images");
 	
 	console.log("name: " + name);
@@ -43,6 +44,7 @@ app.get('/getGameData', function(req, res){
 		"name": name,
 		"shortDescription": shortDescription,
 		"description": description,
+		"coverImage": coverImage,
 		"images": images
 	};
 	

@@ -147,12 +147,18 @@
             var name = json["name"];
             var description = json["description"];
             var shortDescription = json["shortDescription"];
+            var coverImage = json["coverImage"];
             
             GenerateScreenshots(json);
-
+            
+            // Fill name
             $("#name").text(name);
+            // Fill short description
+            $("#shortDescription").text(shortDescription);
+            // Fill cover image
+            $("#cover-image").html("<img src=\"" + coverImage + "\" class=\"img-responsive center-block\">" + "<br/>");
+            // Fill description
             $("#description").text(description);
-            $("#shortDescription").text("short description");
         }
 
 
