@@ -102,10 +102,30 @@
         <script type="text/javascript">
             function GetGameData()
             {
+                // get gameId from url query
                 var urlParams = new URLSearchParams(window.location.search);
-                console.log("getting data for game:" + urlParams.get('name'));
+                var id = urlParams.get('gameId');
+                if(id == null) {
+                    console.log("unable to get game data, parameter name not found");
+                    return;
+                }
+                console.log("getting data for game:" + id);
                 
+                var params = {
+                    gameId: id
+                };
                 
+                var URL = "./getGameData";
+
+                $.ajax({
+                    type: "GET",
+                    url: "./getGameData",
+                    dataType: "text",
+                    data: params,
+                    success: function(msg){
+                        console.log("received response: " + msg);
+                    }
+                });
 
             }
 

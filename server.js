@@ -19,11 +19,24 @@ app.get('/game', function(req, res){
 	res.sendFile(path.join(__dirname + "/game.html"));
 
 	// testing calls to game.js module
-	console.log("game name: " + game.Game.getGameName(req.query.name));
-	console.log("game description: " + game.Game.getGameDescription(req.query.name));
+	console.log("game name: " + game.Game.getGameName(req.query.gameId));
+	console.log("game description: " + game.Game.getGameDescription(req.query.gameId));
 });
 
 app.get('/getGameData', function(req, res){
 	// todo: serve game data using client query
 	// possibly serve array/dictionary of json objects containing each piece of data (name, description, etc.)?
+	
+	// get name and description
+	var name = game.Game.getGameName(req.query.gameId);
+	var description = game.Game.getGameDescription(req.query.gameId);
+	
+	// put in json object
+	var json = {
+		"name": name,
+		"description": description
+	};
+	
+	// send as string (TODO: send as json obj)
+	res.send(JSON.stringify(json));
 });
