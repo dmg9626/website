@@ -5,31 +5,28 @@
 var fs = require('fs');
 
 class Game{
-
-	static HelloWorld() {
-		console.log("hello world");
-	}
-
-	// returns game name
-	static getGameName(gameId) {
-		console.log("requested game name of " + gameId);
-
-		// get games json
-		var gameData = getGameJson(gameId);
-
-		// find game by game id
-		return gameData[gameId].name;
-	}
 	
-	// returns game description 
-	static getGameDescription(gameId) {
-		console.log("requested game description of " + gameId);
+	static getAttribute(gameId, attribute) {
+		console.log("requested " + attribute + " of " + gameId);
 
-		// get games json
+		if(!gameExists(gameId)) {
+			console.log("game " + gameId + " not found");
+			return;
+		}
+		
+		// get json
 		var gameData = getGameJson(gameId);
 
-		// find game by id
-		return gameData[gameId].description;
+		// get game
+		var game = gameData[gameId]
+		
+		// check if game has attribute
+		if(!game.hasOwnProperty(attribute)) {
+			console.log("attribute " + attribute + " not found for game + " + gameId);
+			return;
+		}
+		
+		return game[attribute];
 	}
 }
 
@@ -40,6 +37,12 @@ function getGameJson(gameId) {
 	var gameJson = fs.readFileSync("data/games.json");
 	var gameData = JSON.parse(gameJson);
 	return gameData;
+}
+
+// check if game exists in json file
+function gameExists(gameId) {
+	var gameData = getGameJson(gameId);
+	return gameData[gameId] != null;
 }
 
 exports.Game = Game;

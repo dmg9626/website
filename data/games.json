@@ -1,6 +1,11 @@
 {
 	"foo": {
 		"name": "gameName",
-		"description": "gameDescription"
+		"shortDescription": "gameShortDescription",
+		"description": "gameDescription",
+		"images": [
+			"./images/ayy hold me back nigga.jpg",
+			"./images/kunt.jpg"
+		]
 	}
 }

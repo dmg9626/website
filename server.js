@@ -5,7 +5,6 @@ var fs = require('fs');
 
 // game module
 var game = require('./game');
-game.Game.HelloWorld();
 
 var app = express();
 
@@ -17,10 +16,6 @@ app.listen(8080, function(){
 app.get('/game', function(req, res){
 	// serve game.html
 	res.sendFile(path.join(__dirname + "/game.html"));
-
-	// testing calls to game.js module
-	console.log("game name: " + game.Game.getGameName(req.query.gameId));
-	console.log("game description: " + game.Game.getGameDescription(req.query.gameId));
 });
 
 app.get('/getGameData', function(req, res){
@@ -28,13 +23,27 @@ app.get('/getGameData', function(req, res){
 	// possibly serve array/dictionary of json objects containing each piece of data (name, description, etc.)?
 	
 	// get name and description
-	var name = game.Game.getGameName(req.query.gameId);
-	var description = game.Game.getGameDescription(req.query.gameId);
+	//var name = game.Game.getName(req.query.gameId);
+	//var description = game.Game.getDescription(req.query.gameId);
+	//var images = game.Game.getImages(req.query.gameId);
+	
+	// get attributes
+	var name = game.Game.getAttribute(req.query.gameId, "name");
+	var description = game.Game.getAttribute(req.query.gameId, "description");
+	var shortDescription = game.Game.getAttribute(req.query.gameId, "shortDescription");
+	var images = game.Game.getAttribute(req.query.gameId, "images");
+	
+	console.log("name: " + name);
+	console.log("short description: " + shortDescription);
+	console.log("description: " + description);
+	console.log("images: " + images);
 	
 	// put in json object
 	var json = {
 		"name": name,
-		"description": description
+		"shortDescription": shortDescription,
+		"description": description,
+		"images": images
 	};
 	
 	// send as string (TODO: send as json obj)
