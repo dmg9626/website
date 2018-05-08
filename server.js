@@ -1,6 +1,11 @@
 // load modules
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
+
+// game module
+var game = require('./game');
+game.Game.HelloWorld();
 
 var app = express();
 
@@ -10,12 +15,15 @@ app.listen(8080, function(){
 });
 
 app.get('/game', function(req, res){
+	// serve game.html
 	res.sendFile(path.join(__dirname + "/game.html"));
-	console.log(req.query.name);
-	//getDescription("gameName");
+
+	// testing calls to game.js module
+	console.log("game name: " + game.Game.getGameName(req.query.name));
+	console.log("game description: " + game.Game.getGameDescription(req.query.name));
 });
 
-
-function getDescription(game) {
-	console.log(game);
-}
+app.get('/getGameData', function(req, res){
+	// todo: serve game data using client query
+	// possibly serve array/dictionary of json objects containing each piece of data (name, description, etc.)?
+});
