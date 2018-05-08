@@ -5,10 +5,18 @@
 		"description": "gameDescription",
 		"coverImage": "./images/ayyyy.jpg",
 		"images": [
-			"./images/ayy hold me back nigga.jpg",
-			"./images/kunt.jpg",
-			"./images/ayyyy.jpg",
-			"./images/bert ernie 911.png"
+			{
+				"imagePath": "./images/ayy hold me back nigga.jpg", "caption": "caption 1"
+			},
+			{
+				"imagePath": "./images/kunt.jpg", "caption": "caption 2"
+			},
+			{
+				"imagePath": "./images/ayyyy.jpg", "caption": "caption 3"
+			},
+			{
+				"imagePath": "./images/bert ernie 911.png", "caption": "caption 4"
+			}
 		]
 	}
 }

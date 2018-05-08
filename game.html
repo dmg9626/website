@@ -98,87 +98,109 @@
           
 
         </div> <!-- end of page body -->
-
-        <script type="text/javascript">
-            function GetGameData()
-            {
-                // get gameId from url query
-                var urlParams = new URLSearchParams(window.location.search);
-                var id = urlParams.get('gameId');
-                if(id == null) {
-                    console.log("unable to get game data, parameter name not found");
-                    return;
-                }
-                console.log("getting data for game:" + id);
-                
-                var params = {
-                    gameId: id
-                };
-                
-                var URL = "./getGameData";
-
-                $.ajax({
-                    type: "GET",
-                    url: "./getGameData",
-                    dataType: "text",
-                    data: params,
-                    success: function(msg){
-                        // parse response into json
-                        var json = JSON.parse(msg);
-                        
-                        if(json == null) {
-                            console.log("could not parse response: " + msg);
-                            return;
-                        }
-                        console.log(json);
-                        
-                        FillGameData(json);
-                    }
-                });
-
-            }
-
-            GetGameData();
-            
-            // Fills divs with game data
-            function FillGameData(json) {
-                // get game data
-                var name = json["name"];
-                var description = json["description"];
-                var shortDescription = json["shortDescription"];
-                
-                GenerateScreenshots(json);
-
-                $("#name").text(name);
-                $("#description").text(description);
-                $("#shortDescription").text("short description");
-            }
-
-            function GenerateScreenshots(json) {
-                console.log("generating screenshots");
-                // get images from json
-                var images = json["images"];
-                console.log(images);
-
-                // clear thumbnail grid
-                $("#thumbnail-grid").html("");
-
-                for(var image in images) {
-                    console.log(images[image]);
-
-                    $("#thumbnail-grid").append("<div class=\"col-md-4\">"
-                                                + "<div class=\"thumbnail\">"
-                                                + "<a href=\"" + images[image] + "\">"
-                                                + "<img src=\"" + images[image] + "\" alt=\"Lights\" style=\"width:100%\">"
-                                                + "<div class=\"caption\"><p>" + "Lorem ipsum..." + "</p></div>" 
-                                                + "</a>"
-                                                + "</div>"
-                                                + "</div>");
-                }
-            }
-        </script>
-
     </body>
+
+    <script type="text/javascript">
+        function GetGameData()
+        {
+            // get gameId from url query
+            var urlParams = new URLSearchParams(window.location.search);
+            var id = urlParams.get('gameId');
+            if(id == null) {
+                console.log("unable to get game data, parameter name not found");
+                return;
+            }
+            console.log("getting data for game:" + id);
+            
+            var params = {
+                gameId: id
+            };
+            
+            var URL = "./getGameData";
+
+            $.ajax({
+                type: "GET",
+                url: "./getGameData",
+                dataType: "text",
+                data: params,
+                success: function(msg){
+                    // parse response into json
+                    var json = JSON.parse(msg);
+                    
+                    if(json == null) {
+                        console.log("could not parse response: " + msg);
+                        return;
+                    }
+                    console.log(json);
+                    
+                    FillGameData(json);
+                }
+            });
+
+        }
+
+        GetGameData();
+        
+        // Fills divs with game data
+        function FillGameData(json) {
+            // get game data
+            var name = json["name"];
+            var description = json["description"];
+            var shortDescription = json["shortDescription"];
+            
+            GenerateScreenshots(json);
+
+            $("#name").text(name);
+            $("#description").text(description);
+            $("#shortDescription").text("short description");
+        }
+
+
+        // Generates screenshots from response on page
+        function GenerateScreenshots(json) {
+            console.log("generating screenshots");
+            // get images from json
+            var images = json["images"];
+            console.log(images);
+
+            // clear thumbnail grid
+            $("#thumbnail-grid").html("");
+
+            for(var imageKey in images) {
+                // get image json object (contains image path and caption)
+                var image = images[imageKey];
+                
+                // validate
+                if(image == null) {
+                    console.log("image object [" + imageKey + "] not found, continuing");
+                    continue;
+                }
+                console.log("parsing image [" + imageKey + "]");
+
+                // get image path and caption
+                var imagePath = image["imagePath"];
+                var caption = image["caption"];
+                
+                // validate
+                if(imagePath == null || caption == null) {
+                    console.log("Image could not be parsed: path (" + imagePath + "), caption (" + caption + ")");
+                    continue;
+                }
+
+                $("#thumbnail-grid").append(
+                    "<div class=\"col-md-4\">" +
+                        "<div class=\"thumbnail\">" +
+                            "<a href=\"" + imagePath + "\">" +
+                                "<img src=\"" + imagePath + "\" alt=\"Lights\" style=\"width:100%\">" +
+                                "<div class=\"caption\"><p>" + caption + "</p></div>" +
+                            "</a>" +
+                        "</div>" +
+                    "</div>");
+            }
+        }
+
+    </script>
+    
 </html>
 
 <!--
