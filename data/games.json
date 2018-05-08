@@ -3,9 +3,11 @@
 		"name": "gameName",
 		"shortDescription": "gameShortDescription",
 		"description": "gameDescription",
+		"coverImage": "./images/ayyyy.jpg",
 		"images": [
 			"./images/ayy hold me back nigga.jpg",
-			"./images/kunt.jpg"
+			"./images/kunt.jpg",
+			"./images/ayyyy.jpg"
 		]
 	}
 }

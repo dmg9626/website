@@ -139,18 +139,58 @@
             }
 
             GetGameData();
-
+            
+            // Fills divs with game data
             function FillGameData(json) {
                 // get game data
                 var name = json["name"];
                 var description = json["description"];
-                //var shortDescription = json["shortDescription"];
+                var shortDescription = json["shortDescription"];
+                
+                GenerateScreenshots(json);
 
                 $("#name").text(name);
                 $("#description").text(description);
-                //$("#shortDescription").text("short description");
+                $("#shortDescription").text("short description");
+            }
+
+            function GenerateScreenshots(json) {
+                console.log("generating screenshots");
+                // get images from json
+                var images = json["images"];
+                console.log(images);
+
+                // clear thumbnail grid
+                $("#thumbnail-grid").html("");
+
+                for(var image in images) {
+                    console.log(images[image]);
+
+                    $("#thumbnail-grid").append("<div class=\"col-md-4\">"
+                                                + "<div class=\"thumbnail\">"
+                                                + "<a href=\"" + images[image] + "\">"
+                                                + "<img src=\"" + images[image] + "\" alt=\"Lights\" style=\"width:100%\">"
+                                                + "<div class=\"caption\"><p>" + "Lorem ipsum..." + "</p></div>" 
+                                                + "</a>"
+                                                + "</div>"
+                                                + "</div>");
+                }
             }
         </script>
 
     </body>
 </html>
+
+<!--
+
+    <div class="col-md-4">
+            <div class="thumbnail">
+            <a href="./images/kunt.jpg">
+                <img src="./images/kunt.jpg" alt="Lights" style="width:100%">
+                <div class="caption">
+                    <p>Lorem ipsum...</p>
+                </div>
+            </a>
+            </div>
+        </div>
+-->
