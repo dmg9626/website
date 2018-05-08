@@ -22,8 +22,8 @@
             <div class="jumbotron horizontal-center">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1>Game Title</h1>
-                        <h3>Short description of project</h3>
+                        <h1 id="name">Game Name</h1>
+                        <h3 id="shortDescription">Short description of project</h3>
                     </div>
                 </div>
             </div>
@@ -85,9 +85,9 @@
             
 
             <!-- game description-->
-            <div class="game-description" id="gameDescription">
+            <div class="game-description">
                 <div class="jumbotron">
-                    <div class="game-description-text">
+                    <div class="game-description-text" id="description">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate libero mauris, vitae malesuada mauris porttitor at. Nam scelerisque enim ac libero mattis pharetra sit amet eget neque. 
                         Fusce et efficitur nunc. Quisque maximus dui ut tellus condimentum, sit amet sollicitudin ex porta. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
                         Suspendisse aliquet, arcu quis dignissim vehicula, velit nulla tincidunt neque, ac volutpat erat urna nec risus. Maecenas imperdiet, est sed pretium mollis, nulla ante rhoncus nisi, ac tincidunt 
@@ -123,13 +123,33 @@
                     dataType: "text",
                     data: params,
                     success: function(msg){
-                        console.log("received response: " + msg);
+                        // parse response into json
+                        var json = JSON.parse(msg);
+                        
+                        if(json == null) {
+                            console.log("could not parse response: " + msg);
+                            return;
+                        }
+                        console.log(json);
+                        
+                        FillGameData(json);
                     }
                 });
 
             }
 
             GetGameData();
+
+            function FillGameData(json) {
+                // get game data
+                var name = json["name"];
+                var description = json["description"];
+                //var shortDescription = json["shortDescription"];
+
+                $("#name").text(name);
+                $("#description").text(description);
+                //$("#shortDescription").text("short description");
+            }
         </script>
 
     </body>
