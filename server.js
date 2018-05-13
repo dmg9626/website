@@ -14,11 +14,18 @@ app.listen(port, function(){
     console.log("Server running...");
 });
 
+// serves game.html
 app.get('/game', function(req, res){
-	// serve game.html
 	res.sendFile(path.join(__dirname + "/game.html"));
 });
 
+// returns list of gameIds
+app.get('/getGameIds', function(req, res){
+	var games = game.Game.getGameIds();
+	res.send(games);
+});
+
+// returns data associated with provided gameId
 app.get('/getGameData', function(req, res){
 
 	// get games list and requested gameId
