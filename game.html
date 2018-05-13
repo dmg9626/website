@@ -34,7 +34,6 @@
 
             <!-- cover image of game -->
             <div class="row" id="cover-image">
-                <img src="./images/kunt.jpg" class="img-responsive center-block">        
                 <br/>
             </div>
             <br/>            
@@ -42,45 +41,7 @@
         
             <!-- grid of thumbnails -->
             <div class="row" id="thumbnail-grid">
-
-                <!-- screenshot 1-->
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                    <a href="./images/kunt.jpg">
-                        <img src="./images/kunt.jpg" alt="Lights" style="width:100%">
-                        <div class="caption">
-                        <p>Lorem ipsum...</p>
-                        </div>
-                    </a>
-                    </div>
-                </div>
-
-                <!-- screenshot 2-->
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                    <a href="./images/kunt.jpg">
-                        <img src="./images/kunt.jpg" alt="Nature" style="width:100%">
-                        <div class="caption">
-                        <p>Lorem ipsum...</p>
-                        </div>
-                    </a>
-                    </div>
-                </div>
-                
-                <!-- screenshot 3-->
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                    <a href="./images/kunt.jpg">
-                        <img src="./images/kunt.jpg" alt="Fjords" style="width:100%">
-                        <div class="caption">
-                        <p>Lorem ipsum...</p>
-                        </div>
-                    </a>
-                    </div>
-                </div>
-
-                <!-- scales nicely with additional screenshots-->
-
+                <!-- thumbnails go here -->
             </div>
             
 
@@ -168,8 +129,8 @@
             var images = json["images"];
             console.log(images);
 
-            // clear thumbnail grid
-            $("#thumbnail-grid").html("");
+            // initialize thumbnail grid
+            $("#thumbnail-grid").html("<h3>Screenshots</h3>");
 
             for(var imageKey in images) {
                 // get image json object (contains image path and caption)
