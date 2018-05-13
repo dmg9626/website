@@ -119,13 +119,18 @@
             for(var item in description) {
                 console.log("adding description " + item);
 
-                // ignore header for "main" item
-                if(item != "main") {
-                    // add description header
-                    $("#description").append("</br><h2>" + item + "</h2>");
+                // add description header (ignore for "main" item)
+                if(item != "main" && item != "Github") {
+                    $("#description").append("<h2>" + item + "</h2>");
+                }
+                
+                // Github link
+                if(item == "Github") {
+                    $("#description").append("<h3>Github: <a href=\"" + description[item] + "\">" + description[item] + "</a></h3>");
+                    continue;
                 }
                 // add description body
-                $("#description").append(description[item] + "</br>");
+                $("#description").append("<p>" + description[item] + "</p><hr/>");
             }
             
         }
