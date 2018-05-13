@@ -36,46 +36,12 @@
             </div>
         </div>
 
+        
         <!-- games grid -->
         <div class="row" id="game-grid">
+            <h3>My Games</h3>
 
-            <!-- screenshot 1-->
-            <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/game?gameId=foo">
-                      <img src="./images/kunt.jpg" alt="Lights" style="width:100%">
-                      <div class="caption">
-                        <p>Game 1</p>
-                      </div>
-                  </a>
-                </div>
-            </div>
-
-            <!-- screenshot 2-->
-            <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/game?gameId=foo">
-                      <img src="./images/kunt.jpg" alt="Nature" style="width:100%">
-                      <div class="caption">
-                        <p>Game 2</p>
-                      </div>
-                  </a>
-                </div>
-            </div>
-            
-            <!-- screenshot 3-->
-            <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="./game?gameId=foo">
-                      <img src="./images/kunt.jpg" alt="Fjords" style="width:100%">
-                      <div class="caption">
-                        <p>Game 3</p>
-                      </div>
-                  </a>
-                </div>
-            </div>
-
-            <!-- scales nicely with additional screenshots-->
+            <!-- thumbnail links to game go here -->
 
         </div>
 
@@ -111,8 +77,8 @@
           console.log("ERROR: returned list of games is null");
       }
       else {
-          // clear game grid
-          $("#game-grid").html("");
+          // put header in game grid
+          $("#game-grid").html("<h3>My Games</h3>");
           console.log(games);
 
           // iterate through list of game ids
@@ -131,21 +97,6 @@
                   "</div>" +
               "</div>");
           }
-
-          // for(var i = 0; i < games.length; i++) {
-          //     var game = games[i];
-          //     console.log("creating stub for game " + game["name"]);
-          //     $("#game-grid").append("<div class=\"col-md-4\">" +
-          //         "<div class=\"thumbnail\">" +
-          //             "<a href=\"/game?gameId=" + game + "\">" +
-          //                 "<img src=\"./images/kunt.jpg\" alt=\"Lights\" style=\"width:100%\">" +
-          //                 "<div class=\"caption\">" +
-          //                     "<p>Game " + (i + 1) + "</p>" +
-          //                 "</div>" +
-          //             "</a>" +
-          //         "</div>" +
-          //     "</div>");
-          // }
       }
     }
   </script>
