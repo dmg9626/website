@@ -3,7 +3,28 @@
 		"name": "gameName",
 		"shortDescription": "gameShortDescription",
 		"description": "gameDescription",
-		"coverImage": "./images/ayyyy.jpg",
+		"coverImage": "./images/how it happned.jpg",
+		"images": [
+			{
+				"imagePath": "./images/ayy hold me back nigga.jpg", "caption": "caption 1"
+			},
+			{
+				"imagePath": "./images/kunt.jpg", "caption": "caption 2"
+			},
+			{
+				"imagePath": "./images/ayyyy.jpg", "caption": "caption 3"
+			},
+			{
+				"imagePath": "./images/bert ernie 911.png", "caption": "caption 4"
+			}
+		]
+	},
+
+	"imgay": {
+		"name": "i am gay",
+		"shortDescription": "i am really gay",
+		"description": "(i'm gay)",
+		"coverImage": "./images/goat on a boat.gif",
 		"images": [
 			{
 				"imagePath": "./images/ayy hold me back nigga.jpg", "caption": "caption 1"
