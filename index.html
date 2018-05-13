@@ -7,6 +7,9 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+    <!-- jQuery 3.3.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
     <!-- my stylesheet -->
     <link rel="stylesheet" href="main.css">
 
@@ -34,7 +37,7 @@
         </div>
 
         <!-- games grid -->
-        <div class="row" id="thumbnail-grid">
+        <div class="row" id="game-grid">
 
             <!-- screenshot 1-->
             <div class="col-md-4">
@@ -79,5 +82,57 @@
         
     </div>
   </body>
+
+  <script type="text/javascript">
+    GetGames();
+
+    // Gets list of games from server and passes it to FillGameGrid()
+    function GetGames() {
+        var URL = "./getGameIds";
+
+        $.ajax({
+                type: "GET",
+                url: "./getGameIds",
+                dataType: "json",
+                
+                success: function(msg){
+                    // parse response into json
+                    console.log("games returned from server: " + msg);
+
+                    // fill game grid wtih links to these games
+                    FillGameGrid(msg);
+                }
+            });
+
+    }
+    
+    // Fills game grid with thumbnails with links to games returned from server
+    function FillGameGrid(games) {
+      if(games == null) {
+          console.log("ERROR: returned list of games is null");
+      }
+      else {
+          // clear game grid
+          $("#game-grid").html("");
+          console.log(games);
+
+          // iterate through list of game ids
+          for(var i = 0; i < games.length; i++) {
+              console.log("creating stub for game " + games[i]);
+              $("#game-grid").append("<div class=\"col-md-4\">" +
+                  "<div class=\"thumbnail\">" +
+                      "<a href=\"/game?gameId=" + games[i] + "\">" +
+                          "<img src=\"./images/kunt.jpg\" alt=\"Lights\" style=\"width:100%\">" +
+                          "<div class=\"caption\">" +
+                              "<p>Game " + (i + 1) + "</p>" +
+                          "</div>" +
+                      "</a>" +
+                  "</div>" +
+              "</div>");
+          }
+      }
+    }
+  </script>
+  
 
 </html>
