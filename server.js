@@ -20,8 +20,39 @@ app.get('/game', function(req, res){
 });
 
 // returns list of gameIds
-app.get('/getGameIds', function(req, res){
-	var games = game.Game.getGameIds();
+/* 
+	struture: 	
+			{ 
+				"gameId": {
+					"thumbnail": "image_path",
+					"short description": "short_description"
+				},
+				"anotherGameId": {
+					...
+				}
+			}
+*/
+app.get('/getGames', function(req, res){
+	var gameIds = game.Game.getGames();
+	console.log(gameIds);
+	
+	// create games object
+	var games = {};
+	for(var id in gameIds) {
+		console.log("getting thumbnail for " + gameIds[id]);
+		var name = game.Game.getAttribute(gameIds[id], "name");
+		var thumbnail = game.Game.getAttribute(gameIds[id], "thumbnail");
+		var shortDescription = game.Game.getAttribute(gameIds[id], "shortDescription");
+		console.log(thumbnail);
+		
+		games[gameIds[id]] = {
+			"name": name,
+			"thumbnail": thumbnail,
+			"shortDescription": shortDescription
+		};
+	}
+	console.log(games);
+
 	res.send(games);
 });
 
@@ -29,7 +60,7 @@ app.get('/getGameIds', function(req, res){
 app.get('/getGameData', function(req, res){
 
 	// get games list and requested gameId
-	var games = game.Game.getGameIds();
+	var games = game.Game.getGames();
 	var gameId = req.query.gameId;
 
 	// check if game exists

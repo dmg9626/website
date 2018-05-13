@@ -17,7 +17,8 @@
 			{
 				"imagePath": "./images/bert ernie 911.png", "caption": "caption 4"
 			}
-		]
+		],
+		"thumbnail": "./images/thumbnails/ernie begins to enter the spirit realm.jpg"
 	},
 
 	"imgay": {
@@ -38,6 +39,7 @@
 			{
 				"imagePath": "./images/bert ernie 911.png", "caption": "caption 4"
 			}
-		]
+		],
+		"thumbnail": "./images/thumbnails/headless skeleton.gif"
 	}
 }

@@ -88,11 +88,10 @@
 
     // Gets list of games from server and passes it to FillGameGrid()
     function GetGames() {
-        var URL = "./getGameIds";
 
         $.ajax({
                 type: "GET",
-                url: "./getGameIds",
+                url: "./getGames",
                 dataType: "json",
                 
                 success: function(msg){
@@ -117,19 +116,36 @@
           console.log(games);
 
           // iterate through list of game ids
-          for(var i = 0; i < games.length; i++) {
-              console.log("creating stub for game " + games[i]);
+          for(var gameId in games) {
+              var name = games[gameId].name;
+              var thumbnail = games[gameId].thumbnail;
+              console.log("creating stub for game " + name);
               $("#game-grid").append("<div class=\"col-md-4\">" +
                   "<div class=\"thumbnail\">" +
-                      "<a href=\"/game?gameId=" + games[i] + "\">" +
-                          "<img src=\"./images/kunt.jpg\" alt=\"Lights\" style=\"width:100%\">" +
+                      "<a href=\"/game?gameId=" + gameId + "\">" +
+                          "<img src=\"" + thumbnail +  "\" alt=\"Lights\" style=\"width:100%\">" +
                           "<div class=\"caption\">" +
-                              "<p>Game " + (i + 1) + "</p>" +
+                              "<p>" + name + "</p>" +
                           "</div>" +
                       "</a>" +
                   "</div>" +
               "</div>");
           }
+
+          // for(var i = 0; i < games.length; i++) {
+          //     var game = games[i];
+          //     console.log("creating stub for game " + game["name"]);
+          //     $("#game-grid").append("<div class=\"col-md-4\">" +
+          //         "<div class=\"thumbnail\">" +
+          //             "<a href=\"/game?gameId=" + game + "\">" +
+          //                 "<img src=\"./images/kunt.jpg\" alt=\"Lights\" style=\"width:100%\">" +
+          //                 "<div class=\"caption\">" +
+          //                     "<p>Game " + (i + 1) + "</p>" +
+          //                 "</div>" +
+          //             "</a>" +
+          //         "</div>" +
+          //     "</div>");
+          // }
       }
     }
   </script>

@@ -29,7 +29,7 @@ class Game{
 		return game[attribute];
 	}
 
-	static getGameIds() {
+	static getGames() {
 		console.log("requested list of games");
 
 		// load json
