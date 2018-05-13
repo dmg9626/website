@@ -112,17 +112,15 @@
             }
             console.log("getting data for game:" + id);
             
-            var params = {
-                gameId: id
-            };
-            
             var URL = "./getGameData";
 
             $.ajax({
                 type: "GET",
                 url: "./getGameData",
                 dataType: "text",
-                data: params,
+                data: {
+                    gameId: id
+                },
                 success: function(msg){
                     // parse response into json
                     var json = JSON.parse(msg);
@@ -208,17 +206,3 @@
     </script>
     
 </html>
-
-<!--
-
-    <div class="col-md-4">
-            <div class="thumbnail">
-            <a href="./images/kunt.jpg">
-                <img src="./images/kunt.jpg" alt="Lights" style="width:100%">
-                <div class="caption">
-                    <p>Lorem ipsum...</p>
-                </div>
-            </a>
-            </div>
-        </div>
--->
