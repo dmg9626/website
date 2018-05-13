@@ -7,9 +7,10 @@ var fs = require('fs');
 var game = require('./game');
 
 var app = express();
+var port = 8081;
 
 app.use(express.static("."));
-app.listen(8080, function(){
+app.listen(port, function(){
     console.log("Server running...");
 });
 
