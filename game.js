@@ -15,7 +15,7 @@ class Game{
 		}
 		
 		// get json
-		var gameData = getGameJson(gameId);
+		var gameData = getGameJson();
 
 		// get game
 		var game = gameData[gameId]
@@ -28,11 +28,21 @@ class Game{
 		
 		return game[attribute];
 	}
+
+	static getGameIds() {
+		console.log("requested list of games");
+
+		// load json
+		var gameData = getGameJson();
+
+		// return list of immediate children (game ids)
+		return Object.keys(gameData);
+	}
 }
 
 
 // returns games.json
-function getGameJson(gameId) {
+function getGameJson() {
 	// load and parse games json
 	var gameJson = fs.readFileSync("data/games.json");
 	var gameData = JSON.parse(gameJson);
@@ -41,7 +51,7 @@ function getGameJson(gameId) {
 
 // check if game exists in json file
 function gameExists(gameId) {
-	var gameData = getGameJson(gameId);
+	var gameData = getGameJson();
 	return gameData[gameId] != null;
 }
 

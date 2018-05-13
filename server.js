@@ -20,35 +20,42 @@ app.get('/game', function(req, res){
 });
 
 app.get('/getGameData', function(req, res){
-	// todo: serve game data using client query
-	// possibly serve array/dictionary of json objects containing each piece of data (name, description, etc.)?
-	
-	// get name and description
-	//var name = game.Game.getName(req.query.gameId);
-	//var description = game.Game.getDescription(req.query.gameId);
-	//var images = game.Game.getImages(req.query.gameId);
-	
-	// get attributes
-	var name = game.Game.getAttribute(req.query.gameId, "name");
-	var description = game.Game.getAttribute(req.query.gameId, "description");
-	var shortDescription = game.Game.getAttribute(req.query.gameId, "shortDescription");
-	var coverImage = game.Game.getAttribute(req.query.gameId, "coverImage");
-	var images = game.Game.getAttribute(req.query.gameId, "images");
-	
-	console.log("name: " + name);
-	console.log("short description: " + shortDescription);
-	console.log("description: " + description);
-	console.log("images: " + images);
-	
-	// put in json object
-	var json = {
-		"name": name,
-		"shortDescription": shortDescription,
-		"description": description,
-		"coverImage": coverImage,
-		"images": images
-	};
-	
-	// send as string (TODO: send as json obj)
-	res.send(JSON.stringify(json));
+
+	// get games list and requested gameId
+	var games = game.Game.getGameIds();
+	var gameId = req.query.gameId;
+
+	// check if game exists
+	if(games.indexOf(gameId) == -1) {
+		console.log("ERROR: game " + gameId + " not found");
+
+		// TODO: send a more helpful error message
+		res.send(null);
+	}
+
+	else {
+		// get attributes
+		var name = game.Game.getAttribute(req.query.gameId, "name");
+		var description = game.Game.getAttribute(req.query.gameId, "description");
+		var shortDescription = game.Game.getAttribute(req.query.gameId, "shortDescription");
+		var coverImage = game.Game.getAttribute(req.query.gameId, "coverImage");
+		var images = game.Game.getAttribute(req.query.gameId, "images");
+		
+		console.log("name: " + name);
+		console.log("short description: " + shortDescription);
+		console.log("description: " + description);
+		console.log("images: " + images);
+		
+		// put in json object
+		var json = {
+			"name": name,
+			"shortDescription": shortDescription,
+			"description": description,
+			"coverImage": coverImage,
+			"images": images
+		};
+		
+		// send as string (TODO: send as json obj)
+		res.send(JSON.stringify(json));
+	}
 });
