@@ -49,10 +49,7 @@
             <div class="game-description">
                 <div class="jumbotron">
                     <div class="game-description-text" id="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate libero mauris, vitae malesuada mauris porttitor at. Nam scelerisque enim ac libero mattis pharetra sit amet eget neque. 
-                        Fusce et efficitur nunc. Quisque maximus dui ut tellus condimentum, sit amet sollicitudin ex porta. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
-                        Suspendisse aliquet, arcu quis dignissim vehicula, velit nulla tincidunt neque, ac volutpat erat urna nec risus. Maecenas imperdiet, est sed pretium mollis, nulla ante rhoncus nisi, ac tincidunt 
-                        est ipsum non quam. Nunc id leo quis ligula elementum efficitur.
+                        
                     </div><br>
                 </div>
             </div>
@@ -117,8 +114,20 @@
             $("#shortDescription").text(shortDescription);
             // Fill cover image
             $("#cover-image").html("<img src=\"" + coverImage + "\" class=\"img-responsive center-block\">" + "<br/>");
-            // Fill description
-            $("#description").text(description);
+            // // Fill description
+            $("#description").html("<h2>Description</h2>");
+            for(var item in description) {
+                console.log("adding description " + item);
+
+                // ignore header for "main" item
+                if(item != "main") {
+                    // add description header
+                    $("#description").append("<h2>" + item + "</h2>");
+                }
+                // add description body
+                $("#description").append(description[item]);
+            }
+            
         }
 
 
