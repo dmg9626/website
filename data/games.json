@@ -19,29 +19,5 @@
 			}
 		],
 		"thumbnail": "./images/this-is-trump/TrumpHead.png"
-	},
-
-	"imgay": {
-		"name": "i am gay",
-		"shortDescription": "i am really gay",
-		"description": {
-			"main": "(i'm gay)"
-		},
-		"coverImage": "./images/goat on a boat.gif",
-		"images": [
-			{
-				"imagePath": "./images/ayy hold me back nigga.jpg", "caption": "caption 1"
-			},
-			{
-				"imagePath": "./images/kunt.jpg", "caption": "caption 2"
-			},
-			{
-				"imagePath": "./images/ayyyy.jpg", "caption": "caption 3"
-			},
-			{
-				"imagePath": "./images/bert ernie 911.png", "caption": "caption 4"
-			}
-		],
-		"thumbnail": "./images/thumbnails/headless skeleton.gif"
 	}
 }
