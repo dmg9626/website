@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+        <!-- Bootstrap js -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!-- jQuery 3.3.1 -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
+        <!-- my css -->
+        <link rel="stylesheet" href="main.css">
+    
+        <!-- Cabin font -->
+        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    </head>
+    
+    <body>
+        <!-- page header -->
+        <div class="container">
+            <div class="jumbotron">
+                <div class="row">
+        
+                    <div class="col-xs-12">
+                        <h1>Drew Graham</h1>
+                        <h5>Hi, I make games and talk about games.</h5>
+                    </div>
+                    
+                    <div class="col-xs-12">
+                        <h6>(I'm not a web developer)</h6>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- page body -->
+        <div class="container">
+
+            <!-- grid of thumbnails -->
+            <div class="row" id="game-grid">
+                <!-- thumbnails go here -->
+            </div>
+          
+
+        </div> <!-- end of page body -->
+    </body>
+
+    <script type="text/javascript">
+
+        GetGames();
+
+        // Gets list of games from server and passes it to FillGameGrid()
+        function GetGames() {
+
+            $.ajax({
+                    type: "GET",
+                    url: "./getGames",
+                    dataType: "json",
+                    
+                    success: function(msg){
+                        // parse response into json
+                        console.log("games returned from server: " + msg);
+
+                        // fill game grid wtih links to these games
+                        FillGameGrid(msg);
+                    }
+                });
+
+        }
+
+        // Fills game grid with thumbnails with links to games returned from server
+        function FillGameGrid(games) {
+            if(games == null) {
+                console.log("ERROR: returned list of games is null");
+            }
+            else {
+                // put header in game grid
+                $("#game-grid").html("<h2>My Games</h2></br>");
+                console.log(games);
+
+                // iterate through list of game ids
+                for(var gameId in games) {
+                    var name = games[gameId].name;
+                    var thumbnail = games[gameId].thumbnail;
+                    console.log("creating stub for game " + name);
+                    $("#game-grid").append("<div class=\"col-md-3\">" +
+                        "<div class=\"thumbnail\">" +
+                            "<a href=\"/game?gameId=" + gameId + "\">" +
+                                "<img src=\"" + thumbnail +  "\" alt=\"Lights\" style=\"width:100%\">" +
+                                "<div class=\"caption\">" +
+                                    "<p>" + name + "</p>" +
+                                "</div>" +
+                            "</a>" +
+                        "</div>" +
+                    "</div>");
+                }
+            }
+        }
+
+    </script>
+    
+</html>

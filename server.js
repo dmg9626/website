@@ -32,6 +32,11 @@ app.get('/game', function(req, res){
 				}
 			}
 */
+
+app.get('/games', function(req,res){
+	res.sendFile(path.join(__dirname + "/games.html"));
+});
+
 app.get('/getGames', function(req, res){
 	var gameIds = game.Game.getGames();
 	console.log(gameIds);
