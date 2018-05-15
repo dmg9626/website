@@ -1,0 +1,27 @@
+{
+
+	"text post": {
+		"type": "text",
+		"title": "Post Title",
+		"subtitle": "A subtitle",
+		
+		"body": {
+			"paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas diam tortor, dapibus id suscipit non, posuere ac enim. Pellentesque vitae justo quis erat eleifend scelerisque. Nullam condimentum tincidunt elit a placerat. Maecenas mollis, magna non gravida laoreet, elit orci rutrum dui, non varius velit quam sit amet nulla. Sed scelerisque lectus sed mi mollis, sed ullamcorper lacus laoreet. Sed vitae nisl diam. Ut dictum quam lacus, sed tempor nisl malesuada at.",
+			"paragraph": "Etiam bibendum risus pretium ipsum commodo, in pretium ex vulputate. Mauris auctor sem ac tortor semper pharetra. Donec nec auctor quam, ac auctor nunc. Duis semper vulputate tempor. In nec nisi volutpat, auctor nisl eu, ullamcorper nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent molestie turpis ac nisi efficitur dictum. Donec tempus dolor eu viverra commodo. Etiam sit amet enim sed nulla auctor elementum. Quisque nec egestas nulla, in eleifend sapien. Nam ornare et ipsum eu ornare. Suspendisse et porta nibh, vel condimentum odio. Sed ornare ac urna sit amet pulvinar. Nam molestie dui risus, vitae convallis sapien eleifend sed.",
+			"paragraph": "Donec rhoncus nibh diam, non convallis neque convallis id. Donec venenatis efficitur ligula. Vivamus interdum mattis est quis cursus. Aliquam id nibh tempus, luctus eros pellentesque, vestibulum tellus. Etiam ac posuere elit, ac vehicula lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed interdum non augue sed auctor.",
+			"paragraph": "Donec vel quam non metus condimentum tristique. Curabitur pellentesque enim est, vitae eleifend nisl vehicula nec. Sed lacus urna, sollicitudin at eros nec, tempor bibendum neque. Cras quis ex sapien. Integer ligula odio, aliquet vitae ex eu, consequat feugiat dolor. Aenean lacinia magna et nisi commodo, et venenatis orci tristique. Morbi tempus massa eget tempus tincidunt."
+		}
+	},
+
+	"link post": {
+		"type": "link",
+		"title": "title referring to link",
+		"subtitle": "subtitle about the link",
+		"link": "https://www.youtube.com/watch?v=t6vqb1otKsE",
+
+		"body": {
+			"paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas diam tortor, dapibus id suscipit non, posuere ac enim. Pellentesque vitae justo quis erat eleifend scelerisque. Nullam condimentum tincidunt elit a placerat. Maecenas mollis, magna non gravida laoreet, elit orci rutrum dui, non varius velit quam sit amet nulla. Sed scelerisque lectus sed mi mollis, sed ullamcorper lacus laoreet. Sed vitae nisl diam. Ut dictum quam lacus, sed tempor nisl malesuada at.",
+			"paragraph": "Etiam bibendum risus pretium ipsum commodo, in pretium ex vulputate. Mauris auctor sem ac tortor semper pharetra. Donec nec auctor quam, ac auctor nunc. Duis semper vulputate tempor. In nec nisi volutpat, auctor nisl eu, ullamcorper nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent molestie turpis ac nisi efficitur dictum. Donec tempus dolor eu viverra commodo. Etiam sit amet enim sed nulla auctor elementum. Quisque nec egestas nulla, in eleifend sapien. Nam ornare et ipsum eu ornare. Suspendisse et porta nibh, vel condimentum odio. Sed ornare ac urna sit amet pulvinar. Nam molestie dui risus, vitae convallis sapien eleifend sed"
+		}
+	}
+}
