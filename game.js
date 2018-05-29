@@ -9,7 +9,7 @@ class Game{
 	static getAttribute(gameId, attribute) {
 		console.log("requested " + attribute + " of " + gameId);
 
-		if(!gameExists(gameId)) {
+		if(!this.gameExists(gameId)) {
 			console.log("game " + gameId + " not found");
 			return;
 		}
@@ -30,13 +30,37 @@ class Game{
 	}
 
 	static getGames() {
-		console.log("requested list of games");
 
 		// load json
 		var gameData = getGameJson();
 
 		// return list of immediate children (game ids)
 		return Object.keys(gameData);
+	}
+
+	static getPlayableGames() {
+		console.log("requested list of playable games:");
+
+		// load games.json
+		var gameData = getGameJson();
+
+		// create list of playable games
+		var playableGames = new Array();
+
+		// loop through json and add playable games to list
+		Object.keys(gameData).forEach(function(gameId) {
+			if(gameData[gameId].playable) {
+				playableGames.push(gameId);
+			}
+		});
+
+		console.log(playableGames);
+		return playableGames;
+	}
+
+	static gameExists(gameId) {
+		var gameData = getGameJson();
+		return gameData[gameId] != null;
 	}
 }
 
@@ -47,12 +71,6 @@ function getGameJson() {
 	var gameJson = fs.readFileSync("data/games.json");
 	var gameData = JSON.parse(gameJson);
 	return gameData;
-}
-
-// check if game exists in json file
-function gameExists(gameId) {
-	var gameData = getGameJson();
-	return gameData[gameId] != null;
 }
 
 exports.Game = Game;
