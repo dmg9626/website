@@ -36,7 +36,11 @@
             <div class="row" id="cover-image">
                 <br/>
             </div>
-            <br/>            
+            <br/>
+
+            <!-- link to playable game -->
+            <div class="row" id="game-link">
+            </div>
 
         
             <!-- grid of thumbnail links to games -->
@@ -104,6 +108,7 @@
             var description = json["description"];
             var shortDescription = json["shortDescription"];
             var coverImage = json["coverImage"];
+            var playable = json["playable"];
             
             GenerateScreenshots(json);
             
@@ -130,6 +135,20 @@
                 }
                 // add description body
                 $("#description").append("<p>" + description[item] + "</p><hr/>");
+            }
+            
+            // Fill link to game if playable
+            if(playable) {
+                var link = json["link"];
+                console.log("game is playable, adding link: " + link);
+                $("#game-link").html(
+                    "<h3>Play game "
+                        + "<b><a href=\"" + link + "\">here!</a>"
+                    +"</b></h3><hr>");
+            }
+            else {
+                console.log("game not playable, hiding game-link section");
+                $("#game-link").empty();
             }
             
         }
