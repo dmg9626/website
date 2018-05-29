@@ -38,6 +38,7 @@ app.get('/games', function(req,res){
 });
 
 app.get('/getGames', function(req, res){
+	console.log("requested list of all games");
 	var gameIds = game.Game.getGames();
 	console.log(gameIds);
 	
@@ -59,6 +60,35 @@ app.get('/getGames', function(req, res){
 	console.log(games);
 
 	res.send(games);
+});
+
+// returns page containing playable game
+// NOT WORKING - RETURNED PAGE CANNOT LOAD .js AND .css
+app.get("/playGame", function(req,res){
+	var reqGameId = req.query.gameId;
+
+	if(!game.Game.gameExists(reqGameId)) {
+		console.log("game " + reqGameId + " doesn't exist");
+
+		// TODO: send a more helpful error message, maybe a 404
+		res.send("game " + reqGameId + " doesn't exist");
+		
+	}
+
+	// get list of playable games
+	var gameIds = game.Game.getPlayableGames();
+
+	// check if requested game in list
+	var reqGameId = req.query.gameId;
+	if(gameIds.includes(reqGameId)) {
+		console.log("game " + reqGameId + " playable, returning page");
+		// res.send("/games/" + reqGameId + "/");
+		res.sendFile(path.join(__dirname + "/games/" + reqGameId + "/index.html"));
+	}
+	else {
+		console.log("game " + reqGameId + " not playable");
+	}
+	
 });
 
 // returns data associated with provided gameId
@@ -83,11 +113,15 @@ app.get('/getGameData', function(req, res){
 		var shortDescription = game.Game.getAttribute(req.query.gameId, "shortDescription");
 		var coverImage = game.Game.getAttribute(req.query.gameId, "coverImage");
 		var images = game.Game.getAttribute(req.query.gameId, "images");
+		var playable = game.Game.getAttribute(req.query.gameId, "playable");
+		var link = game.Game.getAttribute(req.query.gameId, "link");
 		
 		console.log("name: " + name);
 		console.log("short description: " + shortDescription);
 		console.log("description: " + description);
 		console.log("images: " + images);
+		console.log("playable: " + playable);
+		console.log("link: " + link);
 		
 		// put in json object
 		var json = {
@@ -95,7 +129,9 @@ app.get('/getGameData', function(req, res){
 			"shortDescription": shortDescription,
 			"description": description,
 			"coverImage": coverImage,
-			"images": images
+			"images": images,
+			"playable": playable,
+			"link": link
 		};
 		
 		// send as string (TODO: send as json obj)

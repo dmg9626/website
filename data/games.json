@@ -18,6 +18,8 @@
 				"caption": "Throw Tweets to discredit the Biased Liberal Media!"
 			}
 		],
-		"thumbnail": "./images/this-is-trump/TrumpHead.png"
+		"thumbnail": "./images/this-is-trump/TrumpHead.png",
+		"playable": true,
+		"link": "/games/this-is-trump/"
 	}
 }
