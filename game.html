@@ -89,12 +89,10 @@
                 return;
             }
             console.log("getting data for game:" + id);
-            
-            var URL = "./getGameData";
 
             $.ajax({
                 type: "GET",
-                url: "./getGameData",
+                url: "/getGameData",
                 dataType: "text",
                 data: {
                     gameId: id
