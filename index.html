@@ -26,7 +26,7 @@
         
         <!-- Navbar -->
         <div class="navbar navbar-default">
-            <div class="navbar-header"><a class="navbar-brand" href="#"><img src="images/logo.png" alt="Drew Graham"></a>
+            <div class="navbar-header"><a class="navbar-brand" href="/">Drew Graham</a>
                 <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -108,6 +108,8 @@
           // put header in game grid
           $("#game-grid").html("<h2>My Games</h2></br>");
 
+          console.log(games);
+
           // iterate through list of game ids
           //for(var gameId in games) {
             for(var i = 0; i < Object.keys(games).length; i++) {
@@ -124,7 +126,9 @@
                 
                 // Get name and thumbnail image path
                 var name = games[gameId].name;
-                var thumbnail = games[gameId].thumbnail;
+
+                // Route path through games/ folder
+                var thumbnail = "games/" + games[gameId].thumbnail;
 
                 // Create thumbnail link
                 console.log("creating link for game: " + name);

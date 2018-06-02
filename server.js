@@ -37,7 +37,7 @@ app.get('/games', function(req,res){
 	res.sendFile(path.join(__dirname + "/games.html"));
 });
 
-app.get('/getGames', function(req, res){
+app.get('/*getGames', function(req, res){
 	console.log("requested list of all games");
 	var gameIds = game.Game.getGames();
 	console.log(gameIds);
