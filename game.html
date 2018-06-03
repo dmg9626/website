@@ -136,7 +136,7 @@
             $("#shortDescription").text(shortDescription);
             // Fill cover image
             $("#cover-image").html("<img src=\"" + coverImage + "\" class=\"img-responsive center-block\">" + "<br/>");
-            // // Fill description
+            // // Fill description (TODO: improve the way description headers are handled)
             $("#description").html("<h2>Description</h2>");
             for(var item in description) {
                 console.log("adding description " + item);
