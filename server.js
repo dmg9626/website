@@ -19,6 +19,11 @@ app.get('/game', function(req, res){
 	res.sendFile(path.join(__dirname + "/game.html"));
 });
 
+// serves about.html
+app.get('/about', function(req, res){
+	res.sendFile(path.join(__dirname + "/about.html"));
+});
+
 // returns list of gameIds
 /* 
 	struture: 	
