@@ -17,8 +17,9 @@ body {
   background-color: #e2e6ee;
 }
 
-.jumbotron .jumbotron-sub {
-  background-color: #ced4df;
+.jumbotron hr {
+  background-color: rgb(206, 206, 206);
+  height:1px
 }
 
 .game-description-text {
