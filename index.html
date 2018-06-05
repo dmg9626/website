@@ -120,27 +120,28 @@
                 // Get game id from object
                 var gameId = Object.keys(games)[i];
                 
-                // Get name and thumbnail image path
+                // Get game name, thumbnail image, and short description (used as caption)
                 var name = games[gameId].name;
-
-                // Route path through games/ folder
                 var thumbnail = games[gameId].thumbnail;
+                var shortDescription = games[gameId].shortDescription;
 
-                // Create thumbnail link
-                console.log("creating link for game: " + name);
-                $("#game-grid").append("<div class=\"col-md-4\">" +
-                    "<div class=\"thumbnail\">" +
+                // Create card for game
+                $("#game-grid").append(
+                "<div class=\"col-md-3\">" +
+                    "<div class=\"card\">" +
                         "<a href=\"/game?gameId=" + gameId + "\">" +
                             "<img src=\"" + thumbnail +  "\" alt=\"Lights\" style=\"width:100%\">" +
-                            "<div class=\"caption\">" +
-                                "<p class=\"text-center\">" + name + "</p>" +
-                            "</div>" +
                         "</a>" +
+                        "<div class=\"card-body\">" +
+                            "<h4 class=\"card-title\">" + name + "</h4>" +
+                            "<p class=\"card text\">" + shortDescription + "</p>" +
+                        "</div>" +
                     "</div>" +
                 "</div>");
-          }
+            }
       }
     }
+    
   </script>
   
 

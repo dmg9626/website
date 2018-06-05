@@ -40,14 +40,11 @@
 
         <!-- page body -->
         <div class="container">
-
             <!-- grid of thumbnails -->
             <div class="row" id="game-grid">
                 <h3>My Games</h3></br>
                 <!-- thumbnails go here -->
             </div>
-          
-
         </div> <!-- end of page body -->
     </body>
 
@@ -65,7 +62,7 @@
                     
                     success: function(msg){
                         // parse response into json
-                        console.log("games returned from server: " + msg);
+                        console.log("games returned from server: " + Object.keys(msg));
 
                         // fill game grid wtih links to these games
                         FillGameGrid(msg);
@@ -86,15 +83,19 @@
                 for(var gameId in games) {
                     var name = games[gameId].name;
                     var thumbnail = games[gameId].thumbnail;
-                    console.log("creating stub for game " + name);
-                    $("#game-grid").append("<div class=\"col-md-3\">" +
-                        "<div class=\"thumbnail\">" +
+                    var shortDescription = games[gameId].shortDescription;
+                    
+                    // Create card for game
+                    $("#game-grid").append(
+                    "<div class=\"col-md-3\">" +
+                        "<div class=\"card\">" +
                             "<a href=\"/game?gameId=" + gameId + "\">" +
                                 "<img src=\"" + thumbnail +  "\" alt=\"Lights\" style=\"width:100%\">" +
-                                "<div class=\"caption\">" +
-                                    "<p class=\"text-center\">" + name + "</p>" +
-                                "</div>" +
                             "</a>" +
+                            "<div class=\"card-body\">" +
+                                "<h4 class=\"card-title\">" + name + "</h4>" +
+                                "<p class=\"card text\">" + shortDescription + "</p>" +
+                            "</div>" +
                         "</div>" +
                     "</div>");
                 }
