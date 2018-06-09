@@ -113,7 +113,7 @@
                 // Create "See More..." link to view games if count is beyond 3
                 if(i >= 3) {
                     console.log("creating link to view full list of games");
-                    $("#see-more").append("<h4> <a href=\"/games\">See More...</a> </div> </h4>");
+                    $("<h4> <a href=\"/games\">See More...</a> </div> </h4>").appendTo("#see-more");
                     return;
                 }
 
@@ -126,8 +126,7 @@
                 var shortDescription = games[gameId].shortDescription;
 
                 // Create card for game
-                $("#game-grid").append(
-                "<div class=\"col-md-3\">" +
+                $("<div class=\"col-md-4\">" +
                     "<div class=\"card\" style=\"width: 18rem;\">" +
                         "<a href=\"/game?gameId=" + gameId + "\">" +
                             "<img src=\"" + thumbnail +  "\" class=\"img-rounded\" alt=\"Lights\" style=\"width:100%\">" +
@@ -137,7 +136,8 @@
                             "<p class=\"card-text\">" + shortDescription + "</p>" +
                         "</div>" +
                     "</div>" +
-                "</div>");
+                "</div>")
+                .appendTo("#game-grid");
             }
       }
     }
