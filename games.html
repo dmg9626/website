@@ -90,22 +90,14 @@
                     // Get game id from object
                     var gameId = Object.keys(games)[i];
 
-
                     // Get game name, thumbnail image, and short description (used as caption)
                     var name = games[gameId].name;
                     var thumbnail = games[gameId].thumbnail;
                     var shortDescription = games[gameId].shortDescription;
-                    
-                    // Add line break
-                    var remainder = (i + 1) % (12 / colGridWidth);
-                    // console.log(gameId + " remainder = (" + i + " + 1) % (12 / " + colGridWidth + ") = " + remainder);
-                    var lineBreak = "";
 
-                    if(remainder == 0) {
-                        console.log("game " + gameId + " is multiple of " + (12 / colGridWidth) + ", adding line break");
-                        lineBreak = "<br>";
-                    }
-                    
+                    // get row number
+                    var rowNumber = Math.floor(i / (12 / colGridWidth));
+                    // console.log(gameId + " row number: " + rowNumber);
 
                     // Create card for game
                     $("#game-grid").append(
@@ -120,9 +112,26 @@
                             "</div>" +
                         "</div>" +
                     "</div>" );
+
+
+
+                    // Add line break if at end of row
+                    var remainder = (i + 1) % (12 / colGridWidth);
+                    // console.log(gameId + " remainder = (" + i + " + 1) % (12 / " + colGridWidth + ") = " + remainder);
+
+                    if(remainder == 0) {
+                        // Check if this is the last game in the list before adding new row
+                        var endOfGamesList = (i + 1) >= Object.keys(games).length;
+                        console.log(gameId + " end of games list: " + endOfGamesList);
+
+                        if(!endOfGamesList) {
+                            console.log("game " + gameId + " is multiple of " + (12 / colGridWidth) + ", adding line break");
+                            
+                            // add new row
+                        }
+                    }
+                    
                 }
-                var children = $("#game-grid").children();
-                console.log(children);
             }
         }
 
