@@ -1,49 +1,46 @@
 <html>
     <head>
         <!-- jQuery 3.3.1 -->
-        <script src="/local_modules/jquery/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="/local_modules/jquery/jquery-3.3.1.min.js"></script>
         
-        <!-- Bootstrap -->
-        <script src="/local_modules/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-        <!-- Bootstrap Optional theme -->
-        <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Bootstrap 4.0 -->
+        <script src="/local_modules/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+
+        <!-- Bootstrap 4.0 CSS -->
+        <link rel="stylesheet" href="/local_modules/bootstrap-4.0.0/dist/css/bootstrap.min.css">
         
         <!-- my stylesheet -->
         <link rel="stylesheet" href="/main.css">
-    
+
         <!-- Cabin font -->
-        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">  
     </head>
     
     <body>
-        <!-- Navbar -->
-        <div class="navbar navbar-default">
-            <div class="navbar-header"><a class="navbar-brand" href="/">Drew Graham</a>
-                <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li class="active"><a href="/games">Games</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li class="disabled"><a>Blog (coming soon)</a></li>
-                </ul>
-            </div>
-        </div>
 
         <!-- page body -->
         <div class="container">
+
+            <!-- Navbar (4.0) -->
+            <nav class="navbar navbar-expand-sm fixed-top bg-light navbar-light">
+                <a class="navbar-brand" href="/">Drew Graham</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/games">Games</a>
+                        <a class="nav-item nav-link" href="/about">About</a>
+                        <a class="nav-item nav-link disabled" href="#">Blog (coming soon)</a>
+                    </div>
+                </div>
+            </nav>
+
+            </br><h3>My Games</h3></br>
             <!-- grid of thumbnails -->
-            <div class="row" id="game-grid">
-                <h3>My Games</h3></br>
+            <div id="game-grid">
+                
                 <!-- thumbnails go here -->
             </div>
         </div> <!-- end of page body -->
@@ -74,31 +71,62 @@
 
         // Fills game grid with thumbnails with links to games returned from server
         function FillGameGrid(games) {
-            if(games == null) {
-                console.log("ERROR: returned list of games is null");
+        if(games == null) {
+            console.log("ERROR: returned list of games is null");
+        }
+        else {
+            console.log(games);
+
+            // Size of game card relative to Bootstrap's 12-grid system
+            var colGridWidth = 4;
+
+            // Create empty rows to be filled with games
+            var numberOfRows = Math.ceil(Object.keys(games).length / (12 / colGridWidth));
+            // console.log("numbef of rows: " + numberOfRows);
+            // console.log("number of games: " + Object.keys(games).length)
+            
+            for(var row = 1; row < numberOfRows + 1; row++) {
+                // console.log("Creating row " + row);
+                
+                // Create row with id = "row-[number]"
+                $("<div class=\"row\" id=\"row-" + row + "\">" + "</div>")
+                .appendTo("#game-grid");
             }
-            else {
-                console.log(games);
 
                 // iterate through list of game ids
-                for(var gameId in games) {
+                for(var i = 0; i < Object.keys(games).length; i++) {
+
+                    // Get game id from object
+                    var gameId = Object.keys(games)[i];
+
+                    // Get game name, thumbnail image, and short description (used as caption)
                     var name = games[gameId].name;
                     var thumbnail = games[gameId].thumbnail;
                     var shortDescription = games[gameId].shortDescription;
+
+                    // Get row number by index in games list
+                    var rowNumber = Math.floor(i / (12 / colGridWidth)) + 1;
+                    // console.log("creating " + gameId + " card in row: " + rowNumber);
                     
-                    // Create card for game
-                    $("#game-grid").append(
-                    "<div class=\"col-md-4\">" +
+                    // Insert game card into row
+                    $("<div class=\"col-md-" + colGridWidth + "\">" +
                         "<div class=\"card\">" +
                             "<a href=\"/game?gameId=" + gameId + "\">" +
-                                "<img src=\"" + thumbnail +  "\" alt=\"Lights\" style=\"width:100%\">" +
+                                "<img src=\"" + thumbnail +  "\" class=\"img-rounded\" alt=\"Lights\" style=\"width:100%\">" +
                             "</a>" +
                             "<div class=\"card-body\">" +
                                 "<h4 class=\"card-title\">" + name + "</h4>" +
-                                "<p class=\"card text\">" + shortDescription + "</p>" +
+                                "<p class=\"card-text\">" + shortDescription + "</p>" +
                             "</div>" +
                         "</div>" +
-                    "</div>");
+                    "</div>")
+                    .appendTo("#game-grid #row-" + rowNumber);
+                }
+                
+                // Add line break after each row
+                for(var i = 1; i <= numberOfRows; i++) {
+                    // console.log("adding line break after row " + i);
+                    $("</br>").insertAfter("#game-grid #row-" + i);
                 }
             }
         }

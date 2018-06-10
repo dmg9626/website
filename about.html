@@ -1,16 +1,13 @@
 <html>
     <head>
         <!-- jQuery 3.3.1 -->
-        <script src="/local_modules/jquery/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="/local_modules/jquery/jquery-3.3.1.min.js"></script>
         
-        <!-- Bootstrap -->
-        <script src="/local_modules/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <!-- Bootstrap 4.0 -->
+        <script src="/local_modules/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        <!-- Bootstrap Optional theme -->
-        <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Bootstrap 4.0 CSS -->
+        <link rel="stylesheet" href="/local_modules/bootstrap-4.0.0/dist/css/bootstrap.min.css">
         
         <!-- my stylesheet -->
         <link rel="stylesheet" href="/main.css">
@@ -21,82 +18,84 @@
 
     <body>
         <!-- Navbar -->
-        <div class="navbar navbar-default">
-            <div class="navbar-header"><a class="navbar-brand" href="/">Drew Graham</a>
-                <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
+        <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+            <a class="navbar-brand" href="/">Drew Graham</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/games">Games</a>
+                    <a class="nav-item nav-link" href="/about">About</a>
+                    <a class="nav-item nav-link disabled" href="#">Blog (coming soon)</a>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/games">Games</a></li>
-                    <li class="active"><a href="/about">About</a></li>
-                    <li class="disabled"><a>Blog (coming soon)</a></li>
-                </ul>
-            </div>
-        </div>
+        </nav>
 
         <div class="container">
+            <br>
             <div class="jumbotron jumbotron-sub">
                 
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Profile image aligned left -->
-                        <img class="img-rounded" style='float:left;width:225px;height:225px; margin-right:40px;' src="images/about/profile.jpg" title="That's me!"/>
+                        <img class="rounded" style='float:left;width:225px;height:225px; margin-right:40px;' src="images/about/profile.jpg" title="That's me!"/>
 
                         <div class="game-description-text">
                             <!-- Text body -->
                             <h2>About Me</h1>
                             <p>I'm a game developer from Orlando, currently enrolled at Drexel University in Computer Science with a Game Development concentration.</p>
                             <p>When I'm not talking about games, I can be found enjoying the weather, yelling about internet privacy, or tinkering with my Raspberry Pi.</p>
-                            <br>
+                            <br><br>
 
                             <hr>
                             
                             <!-- Things I'm enjoying section -->
-                            
+                            <h2>I'm currently enjoying:</h2> <br>
                             <div class="row">
-                                <h2>I'm currently enjoying:</h2>
+
+                                <!-- Metroid Prime -->
                                 <div class="col-md-4">
                                     <div class="thumbnail">
                                         <a href="https://kotaku.com/metroid-prime-the-kotaku-review-1764050288" target="_blank">
-                                            <img src="images/about/metroid prime.jpg" alt="Lights" style="width:100%"
+                                            <img src="images/about/metroid prime.jpg" class="rounded" style="width:100%"
                                             title="This game does a great job of delivering narrative through the environment"/>
-                                            <div class="caption">
-                                                <p>Metroid Prime</p>
-                                            </div>
                                         </a>
+
+                                        <div class="caption">
+                                            <p>Metroid Prime</p>
+                                        </div>
                                     </div>
                                 </div>
 
+                                <!-- Better Call Saul -->
                                 <div class="col-md-4">
                                     <div class="thumbnail">
                                         <a href="https://www.hotnewhiphop.com/amcs-better-call-saul-gets-season-4-release-date-news.51725.html" target="_blank">
-                                            <img src="images/about/better call saul.jpg" alt="Lights" style="width:100%"
+                                            <img src="images/about/better call saul.jpg" class="rounded" style="width:100%"
                                             title="Maybe Season 4 will be better"/>
-                                            <div class="caption">
-                                                <p>Better Call Saul</p>
-                                            </div>
                                         </a>
+                                            
+                                        <div class="caption">
+                                            <p>Better Call Saul</p>
+                                        </div>
                                     </div>
                                 </div>
 
+                                <!-- Ghost in the Shell -->
                                 <div class="col-md-4">
                                     <div class="thumbnail">
                                         <a href="https://www.pcgamesn.com/ghost-in-the-shell-stand-alone-complex-first-assault-online/ghost-in-the-shell-stand-alone-complex-first-assault-online-shutting-down" target="_blank">
-                                            <img src="images/about/ghost in the shell.jpg" alt="Lights" style="width:100%" 
+                                            <img src="images/about/ghost in the shell.jpg" class="rounded" style="width:100%" 
                                             title="Don't be misled by the tactical lingerie - it's actually a fantastic sci-fi about AI and the concept of &quot;self&quot;"/>
-                                            <div class="caption">
-                                                <p>Ghost in the Shell: Stand Alone Complex</p>
-                                            </div>
                                         </a>
+                                            
+                                        <div class="caption">
+                                            <p>Ghost in the Shell: Stand Alone Complex</p>
+                                        </div>
                                     </div>
                                 </div>
-
-                            </div>
 
                         </div>
                     </div>

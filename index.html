@@ -3,14 +3,11 @@
         <!-- jQuery 3.3.1 -->
         <script src="/local_modules/jquery/jquery-3.3.1.min.js"></script>
         
-        <!-- Bootstrap -->
+        <!-- Bootstrap 4.0 -->
         <script src="/local_modules/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 
-        <!-- Bootstrap CSS -->
+        <!-- Bootstrap 4.0 CSS -->
         <link rel="stylesheet" href="/local_modules/bootstrap-4.0.0/dist/css/bootstrap.min.css">
-
-        <!-- Bootstrap Optional theme -->
-        <!-- <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
         
         <!-- my stylesheet -->
         <link rel="stylesheet" href="/main.css">
@@ -38,7 +35,7 @@
 
         <div class="container">
             
-            <br>
+            <br> <!-- TODO: get around forcing padding via line breaks like this-->
             <!-- page header -->
             <div class="jumbotron">
                 <div class="row">
@@ -64,6 +61,7 @@
             </div>
 
             
+            <br>
             <!-- create link to remaning games if game grid overflows past 3 -->
             <div class="row" id="see-more">
             </div>
@@ -113,7 +111,7 @@
                 // Create "See More..." link to view games if count is beyond 3
                 if(i >= 3) {
                     console.log("creating link to view full list of games");
-                    $("#see-more").append("<h4> <a href=\"/games\">See More...</a> </div> </h4>");
+                    $("<h4> <a href=\"/games\">See More...</a> </div> </h4>").appendTo("#see-more");
                     return;
                 }
 
@@ -126,8 +124,7 @@
                 var shortDescription = games[gameId].shortDescription;
 
                 // Create card for game
-                $("#game-grid").append(
-                "<div class=\"col-md-3\">" +
+                $("<div class=\"col-md-4\">" +
                     "<div class=\"card\" style=\"width: 18rem;\">" +
                         "<a href=\"/game?gameId=" + gameId + "\">" +
                             "<img src=\"" + thumbnail +  "\" class=\"img-rounded\" alt=\"Lights\" style=\"width:100%\">" +
@@ -137,7 +134,8 @@
                             "<p class=\"card-text\">" + shortDescription + "</p>" +
                         "</div>" +
                     "</div>" +
-                "</div>");
+                "</div>")
+                .appendTo("#game-grid");
             }
       }
     }
