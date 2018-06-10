@@ -1,46 +1,50 @@
 <html>
     <head>
         <!-- jQuery 3.3.1 -->
-        <script src="/local_modules/jquery/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="/local_modules/jquery/jquery-3.3.1.min.js"></script>
         
-        <!-- Bootstrap -->
-        <script src="/local_modules/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-        <!-- Bootstrap Optional theme -->
-        <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Bootstrap 4.0 -->
+        <script src="/local_modules/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+
+        <!-- Bootstrap 4.0 CSS -->
+        <link rel="stylesheet" href="/local_modules/bootstrap-4.0.0/dist/css/bootstrap.min.css">
+
+        <!-- Bootstrap 3.0 -->
+        <!-- <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/js/bootstrap.min.js"> -->
+
+        <!-- Bootstrap 3.0 CSS-->
+        <!-- <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap.min.css"> -->
+
+        <!-- Bootstrap 3.3.7 Optional theme -->
+        <!-- <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
         
         <!-- my stylesheet -->
         <link rel="stylesheet" href="/main.css">
-    
+
         <!-- Cabin font -->
-        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">  
     </head>
     
     <body>
         <!-- Navbar -->
-        <div class="navbar navbar-default">
-            <div class="navbar-header"><a class="navbar-brand" href="/">Drew Graham</a>
-                <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li class="active"><a href="/games">Games</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li class="disabled"><a>Blog (coming soon)</a></li>
-                </ul>
-            </div>
-        </div>
+        <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+                <a class="navbar-brand" href="/">Drew Graham</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/games">Games</a>
+                        <a class="nav-item nav-link" href="/about">About</a>
+                        <a class="nav-item nav-link disabled" href="#">Blog (coming soon)</a>
+                    </div>
+                </div>
+            </nav>
 
         <!-- page header -->
         <div class="container">
+            <br>
             <div class="jumbotron horizontal-center">
                 <div class="row">
                     <div class="col-xs-12">
@@ -62,9 +66,11 @@
 
             <!-- link to playable game -->
             <div class="row" id="game-link">
+                <br><br><br>
             </div>
 
-        
+            
+            <h3>Screenshots</h3> <br>
             <!-- grid of thumbnail links to games -->
             <div class="row" id="thumbnail-grid">
                 <!-- thumbnails go here -->
@@ -73,6 +79,7 @@
 
             <!-- game description-->
             <div class="game-description">
+                <br>
                 <div class="jumbotron">
                     <div class="game-description-text" id="description"></div>
                     <br>
@@ -134,12 +141,16 @@
             
             // Fill name
             $("#name").text(name);
+
             // Fill short description
             $("#shortDescription").text(shortDescription);
+
             // Fill cover image
-            $("#cover-image").html("<img src=\"" + coverImage + "\" class=\"img-responsive center-block\">" + "<br/>");
+            $("#cover-image").html("<img src=\"" + coverImage + "\" class=\"rounded mx-auto d-block\">" + "<br/>");
+            
             // // Fill description (TODO: improve the way description headers are handled)
             $("#description").html("<h2>Description</h2>");
+            
             for(var item in description) {
                 console.log("adding description " + item);
 
@@ -161,13 +172,15 @@
             if(playable) {
                 var link = json["link"];
                 console.log("game is playable, adding link: " + link);
-                $("#game-link").html(
+                $("#game-link").append(
                     "<h3>Play game "
-                        + "<b><a href=\"" + link + "\">here!</a>"
-                    +"</b></h3><hr>");
+                        + "<b><a href=\"" + link + "\">here!</a></b>" + "</h3>"
+                    + "<hr>");
             }
             else {
-                console.log("game not playable, hiding game-link section");
+                // console.log("game not playable, hiding game-link section");
+
+                // empty contents of game link div
                 $("#game-link").empty();
             }
             
@@ -180,9 +193,6 @@
             // get images from json
             var images = json["images"];
             console.log(images);
-
-            // initialize thumbnail grid
-            $("#thumbnail-grid").html("<h3>Screenshots</h3>");
 
             for(var imageKey in images) {
                 // get image json object (contains image path and caption)
@@ -204,18 +214,28 @@
                     console.log("Image could not be parsed: path (" + imagePath + "), caption (" + caption + ")");
                     continue;
                 }
+                
+                // Create screenshot
+                $("<div class=\"col-md-4\">" +
+                    "<figure class=\"figure\">" +
+                        "<a href=\"" + imagePath + "\">" +
+                            "<img src=\"" + imagePath + "\" class=\"figure-img img-fluid rounded\" alt=\"A generic square placeholder image with rounded corners in a figure.\">" +
+                        "</a>" +
+                        "<figcaption class=\"figure-caption\">" + caption + "</figcaption>" +
+                    "</figure>" +  
+                "</div>").appendTo("#thumbnail-grid");
 
-                $("#thumbnail-grid").append(
-                    "<div class=\"col-md-4\">" +
-                        "<div class=\"thumbnail\">" +
-                            "<a href=\"" + imagePath + "\">" +
-                                "<img src=\"" + imagePath + "\" alt=\"Lights\" style=\"width:100%\">" +
-                                "<div class=\"caption\"><p>" + caption + "</p></div>" +
-                            "</a>" +
-                        "</div>" +
-                    "</div>");
+                /* screenshot format:
+
+                    <figure class="figure">
+                        <img src="/path/to/image" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                    </figure> 
+                    */
             }
         }
+
+        
 
     </script>
     
