@@ -8,15 +8,6 @@
 
         <!-- Bootstrap 4.0 CSS -->
         <link rel="stylesheet" href="/local_modules/bootstrap-4.0.0/dist/css/bootstrap.min.css">
-
-        <!-- Bootstrap 3.0 -->
-        <!-- <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/js/bootstrap.min.js"> -->
-
-        <!-- Bootstrap 3.0 CSS-->
-        <!-- <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap.min.css"> -->
-
-        <!-- Bootstrap 3.3.7 Optional theme -->
-        <!-- <link rel="stylesheet" href="/local_modules/bootstrap-3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
         
         <!-- my stylesheet -->
         <link rel="stylesheet" href="/main.css">
@@ -70,10 +61,9 @@
             </div>
 
             
+            <!-- Grid of game screenshots -->
             <h3>Screenshots</h3> <br>
-            <!-- grid of thumbnail links to games -->
             <div class="row" id="thumbnail-grid">
-                <!-- thumbnails go here -->
             </div>
             
 
@@ -87,10 +77,13 @@
             </div>
           
 
-        </div> <!-- end of page body -->
+        </div>
     </body>
 
     <script type="text/javascript">
+
+        GetGameData();
+
         function GetGameData()
         {
             // get gameId from url query
@@ -125,8 +118,6 @@
             });
 
         }
-
-        GetGameData();
         
         // Fills divs with game data
         function FillGameData(json) {
@@ -140,10 +131,10 @@
             GenerateScreenshots(json);
             
             // Fill name
-            $("#name").text(name);
+            $("#name").html("<h1>" + name + "</h1>");
 
             // Fill short description
-            $("#shortDescription").text(shortDescription);
+            $("#shortDescription").html("<h5> " + shortDescription + "</h5>");
 
             // Fill cover image
             $("#cover-image").html("<img src=\"" + coverImage + "\" class=\"rounded mx-auto d-block\">" + "<br/>");
@@ -151,6 +142,7 @@
             // // Fill description (TODO: improve the way description headers are handled)
             $("#description").html("<h2>Description</h2>");
             
+            // Cycle through sections of description
             for(var item in description) {
                 console.log("adding description " + item);
 
@@ -224,18 +216,8 @@
                         "<figcaption class=\"figure-caption\">" + caption + "</figcaption>" +
                     "</figure>" +  
                 "</div>").appendTo("#thumbnail-grid");
-
-                /* screenshot format:
-
-                    <figure class="figure">
-                        <img src="/path/to/image" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption">A caption for the above image.</figcaption>
-                    </figure> 
-                    */
             }
         }
-
-        
 
     </script>
     
