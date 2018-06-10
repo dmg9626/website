@@ -1,5 +1,11 @@
 body {
-  background-color: #FFFFFF
+  background-color: #FFFFFF;
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 60px;
+  }
 }
 
 .jumbotron {
