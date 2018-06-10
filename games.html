@@ -48,7 +48,7 @@
 
             </br><h3>My Games</h3></br>
             <!-- grid of thumbnails -->
-            <div class="row" id="game-grid">
+            <div id="game-grid">
                 
                 <!-- thumbnails go here -->
             </div>
@@ -89,7 +89,20 @@
             // Size of game card relative to Bootstrap's 12-grid system
             var colGridWidth = 4;
 
-            // iterate through list of game ids
+            // Create empty rows to be filled with games
+            var numberOfRows = Math.ceil(Object.keys(games).length / (12 / colGridWidth));
+            // console.log("numbef of rows: " + numberOfRows);
+            // console.log("number of games: " + Object.keys(games).length)
+            
+            for(var row = 1; row < numberOfRows + 1; row++) {
+                // console.log("Creating row " + row);
+                
+                // Create row with id = "row-[number]"
+                $("<div class=\"row\" id=\"row-" + row + "\">" + "</div>")
+                .appendTo("#game-grid");
+            }
+
+                // iterate through list of game ids
                 for(var i = 0; i < Object.keys(games).length; i++) {
 
                     // Get game id from object
@@ -100,62 +113,32 @@
                     var thumbnail = games[gameId].thumbnail;
                     var shortDescription = games[gameId].shortDescription;
 
-                    // get row number
-                    var rowNumber = Math.floor(i / (12 / colGridWidth));
-                    // console.log(gameId + " row number: " + rowNumber);
-
-                    // Create card for game
-                    $("<div id=\"" + gameId + "\" class=\"col-md-" + colGridWidth + "\">" +
+                    // Get row number by index in games list
+                    var rowNumber = Math.floor(i / (12 / colGridWidth)) + 1;
+                    // console.log("creating " + gameId + " card in row: " + rowNumber);
+                    
+                    // Insert game card into row
+                    $("<div class=\"col-md-" + colGridWidth + "\">" +
                         "<div class=\"card\">" +
                             "<a href=\"/game?gameId=" + gameId + "\">" +
-                                "<img src=\"" + thumbnail +  "\" alt=\"Lights\" style=\"width:100%\">" +
+                                "<img src=\"" + thumbnail +  "\" class=\"img-rounded\" alt=\"Lights\" style=\"width:100%\">" +
                             "</a>" +
                             "<div class=\"card-body\">" +
                                 "<h4 class=\"card-title\">" + name + "</h4>" +
-                                "<p class=\"card text\">" + shortDescription + "</p>" +
+                                "<p class=\"card-text\">" + shortDescription + "</p>" +
                             "</div>" +
                         "</div>" +
                     "</div>")
-                    .appendTo("#game-grid");
-
-
-
-                    // Add line break if at end of row
-                    var remainder = (i + 1) % (12 / colGridWidth);
-                    // console.log(gameId + " remainder = (" + i + " + 1) % (12 / " + colGridWidth + ") = " + remainder);
-
-                    if(remainder == 0) {
-                        // Check if this is the last game in the list before adding new row
-                        var endOfGamesList = (i + 1) >= Object.keys(games).length;
-                        console.log(gameId + " end of games list: " + endOfGamesList);
-
-                        if(!endOfGamesList) {
-                            console.log("game " + gameId + " is multiple of " + (12 / colGridWidth) + ", adding line break");
-                            
-                            // add new row
-                        }
-                    }
-                    
+                    .appendTo("#game-grid #row-" + rowNumber);
+                }
+                
+                // Add line break after each row
+                for(var i = 1; i <= numberOfRows; i++) {
+                    // console.log("adding line break after row " + i);
+                    $("</br>").insertAfter("#game-grid #row-" + i);
                 }
             }
         }
-
-        /*          new game card styling (TODO: implement this)
-
-                    // Create card for game
-                    $("#game-grid").append(
-                    "<div class=\"col-md-3\">" +
-                        "<div class=\"card\">" +
-                            "<a href=\"/game?gameId=" + gameId + "\">" +
-                                "<img src=\"" + thumbnail +  "\" alt=\"Lights\" style=\"width:100%\">" +
-                            "</a>" +
-                            "<div class=\"card-body\">" +
-                                "<h4 class=\"card-title\">" + name + "</h4>" +
-                                "<p class=\"card text\">" + shortDescription + "</p>" +
-                            "</div>" +
-                        "</div>" +
-                    "</div>");
-        */
 
     </script>
     
