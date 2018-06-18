@@ -1,5 +1,6 @@
 body {
-  background-color: #FFFFFF;
+  /* bootstrap 3.3.7 CSS */
+  /* background-color: #FFFFFF; */
   padding-top: 60px;
 }
 @media (max-width: 979px) {
@@ -9,8 +10,9 @@ body {
 }
 
 .jumbotron {
-  background-color: #ebedf1;
-  background-size: cover;
+  /* bootstrap 3.3.7 CSS */
+  /* background-color: #ebedf1; */
+  /* background-size: cover; */
 }
 
 .jumbotron h1 {
