@@ -30,7 +30,13 @@
 			"main": "Surface Tension is a puzzle platform game that relies on adjusting the properties of surfaces to traverse obstacles. The player surveys the entire level before bouncing, sliding and climbing their way around obstacles. Surface Tension relies on fast-paced maneuvers woven with restful periods of planning before diving back into an ever more complex set of movements.",
 			"Github": "https://github.com/dmg9626/surface-tension"
 		},
-		"coverImage": "/games/images/this-is-trump/screenshots/MainMenu.png",
+		"coverImage": "/images/surface-tension/cover.png",
+		"images": [
+			{
+				"imagePath": "/images/surface-tension/screenshots/bounce.png", 
+				"caption": "Use the Bouncy surface to reach high places"
+			}
+		],
 		"thumbnail": "/images/surface-tension/thumbnail.png",
 		"playable": true,
 		"link": "/games/surface-tension/"
