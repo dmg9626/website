@@ -53,15 +53,12 @@
                 </div>
             </div>
 
+
             <!-- games grid -->
             <h3>Recent Games</h3></br>
             <div id="game-grid">
-
                 <!-- game cards go here -->
-
             </div>
-            
-            <!-- create link to remaning games if game grid overflows past 3 -->
             
 
             <div class="row" id="posts">
@@ -72,101 +69,102 @@
         </div>
     </body>
 
-  <script type="text/javascript">
-    
-    // jQuery identifier for game grid <div> element
-    var gameGrid = "#game-grid";
+    <script type="text/javascript">
+        
+        // jQuery identifier for game grid <div> element
+        var gameGrid = "#game-grid";
 
-    // Width of each game card (relative to Bootstrap's 12-grid system)
-    var colGridWidth = 4;
+        // Width of each game card (relative to Bootstrap's 12-grid system)
+        var colGridWidth = 4;
 
-    // Number of games to display in grid (selected in order parsed by json)
-    var gameLimit = 3;
+        // Number of games to display in grid (selected in order parsed by json)
+        var gameLimit = 3;
 
-    GetGames(gameGrid, colGridWidth, gameLimit);
+        GetGames(gameGrid, colGridWidth, gameLimit);
 
-    // Gets list of games from server and passes it to FillGameGrid()
-    function GetGames(gameGrid, colGridWidth = 4, limit) {
-        $.ajax({
-            type: "GET",
-            url: "/getGames",
-            dataType: "json",
-            
-            success: function(msg){
-                console.log(msg);
+        // Gets list of games from server and passes it to FillGameGrid()
+        function GetGames(gameGrid, colGridWidth = 4, limit) {
+            $.ajax({
+                type: "GET",
+                url: "/getGames",
+                dataType: "json",
                 
-                // Check if games response valid
-                if(msg == null) {
-                    console.log("ERROR: returned list of games is null");
+                success: function(msg){
+                    console.log(msg);
+                    
+                    // Check if games response valid
+                    if(msg == null) {
+                        console.log("ERROR: returned list of games is null");
+                    }
+                    else {
+                        FillGameGrid(msg, gameGrid, colGridWidth, limit);
+                    }
                 }
-                else {
-                    FillGameGrid(msg, gameGrid, colGridWidth, limit);
-                }
+            });
+        }
+
+        // Fills game grid with thumbnails with links to games returned from server
+        function FillGameGrid(games, gameGrid, colGridWidth, limit) {
+            var numberOfGames = limit || Object.keys(games).length;
+            var numberOfRows = Math.ceil(numberOfGames / (12 / colGridWidth));
+
+            console.log("number of rows: " + numberOfRows);
+            console.log("number of games: " + numberOfGames);
+            
+            // Create empty rows to be filled with games
+            for(var row = 1; row < numberOfRows + 1; row++) {
+                console.log("Creating row " + row);
+                
+                // Create row with id = "row-[number]"
+                $("<div class=\"row\" id=\"row-" + row + "\">" + "</div>")
+                .appendTo(gameGrid);
             }
-        });
-    }
 
-    // Fills game grid with thumbnails with links to games returned from server
-    function FillGameGrid(games, gameGrid, colGridWidth, limit) {
-        var numberOfGames = limit || Object.keys(games).length;
-        var numberOfRows = Math.ceil(numberOfGames / (12 / colGridWidth));
+            // Fill rows with game cards
+            for(var i = 0; i < numberOfGames; i++) {
 
-        console.log("number of rows: " + numberOfRows);
-        console.log("number of games: " + numberOfGames);
-        
-        // Create empty rows to be filled with games
-        for(var row = 1; row < numberOfRows + 1; row++) {
-            console.log("Creating row " + row);
-            
-            // Create row with id = "row-[number]"
-            $("<div class=\"row\" id=\"row-" + row + "\">" + "</div>")
-            .appendTo(gameGrid);
-        }
+                // Get game id from object
+                var gameId = Object.keys(games)[i];
 
-        // Fill rows with game cards
-        for(var i = 0; i < numberOfGames; i++) {
+                // Get game name, thumbnail image, and short description (used as caption)
+                var name = games[gameId].name;
+                var thumbnail = games[gameId].thumbnail;
+                var shortDescription = games[gameId].shortDescription;
 
-            // Get game id from object
-            var gameId = Object.keys(games)[i];
-
-            // Get game name, thumbnail image, and short description (used as caption)
-            var name = games[gameId].name;
-            var thumbnail = games[gameId].thumbnail;
-            var shortDescription = games[gameId].shortDescription;
-
-            // Get row number by index in games list
-            var rowNumber = Math.floor(i / (12 / colGridWidth)) + 1;
-            console.log("creating " + gameId + " card in row: " + rowNumber);
-            
-            // Insert game card into row
-            $("<div class=\"col-md-" + colGridWidth + "\">" +
-                "<div class=\"card\">" +
-                    "<a href=\"/game?gameId=" + gameId + "\">" +
-                        "<img src=\"" + thumbnail +  "\" class=\"img-rounded\" alt=\"Lights\" style=\"width:100%\">" +
-                    "</a>" +
-                    "<div class=\"card-body\">" +
-                        "<h4 class=\"card-title\">" + name + "</h4>" +
-                        "<p class=\"card-text\">" + shortDescription + "</p>" +
+                // Get row number by index in games list
+                var rowNumber = Math.floor(i / (12 / colGridWidth)) + 1;
+                console.log("creating " + gameId + " card in row: " + rowNumber);
+                
+                // Insert game card into row
+                $("<div class=\"col-md-" + colGridWidth + "\">" +
+                    "<div class=\"card\">" +
+                        "<a href=\"/game?gameId=" + gameId + "\">" +
+                            "<img src=\"" + thumbnail +  "\" class=\"img-rounded\" alt=\"Lights\" style=\"width:100%\">" +
+                        "</a>" +
+                        "<div class=\"card-body\">" +
+                            "<h4 class=\"card-title\">" + name + "</h4>" +
+                            "<p class=\"card-text\">" + shortDescription + "</p>" +
+                        "</div>" +
                     "</div>" +
-                "</div>" +
-            "</div>")
-            .appendTo(gameGrid + " #row-" + rowNumber);
+                "</div>")
+                .appendTo(gameGrid + " #row-" + rowNumber);
+            }
+
+            // Add See More... link if games overflow past limit (should only be used on home page)
+            if(limit != undefined && Object.keys(games).length > limit) {
+                // It takes up an additional row at the bottom of the grid
+                numberOfRows++;
+
+                $("<div class=\"row\" id=\"row-" + numberOfRows + "\">" + "</div>").appendTo(gameGrid);
+                $("<h4> <a href=\"/games\">See More...</a> </h4>").appendTo(gameGrid + " #row-" + numberOfRows);
+            }
+
+            // Add line break after each row
+            console.log("game grid filled, adding line breaks between rows");
+            for(var i = 1; i <= numberOfRows; i++) {
+                $("</br>").insertAfter(gameGrid + " #row-" + i);
+            }
         }
         
-        // Add line break between each row
-        console.log("game grid filled, adding line breaks between rows");
-        for(var i = 1; i <= numberOfRows; i++) {
-            $("</br>").insertAfter(gameGrid + " #row-" + i);
-        }
-
-        // Add link to full Games page if games overflow past limit (should only be used on home page)
-        if(limit != undefined && Object.keys(games).length > limit) {
-            // TODO: make this a row
-            $("<h4> <a href=\"/games\">See More...</a> </div> </h4> <br>").appendTo(gameGrid);
-        }
-    }
-    
-  </script>
-  
-
+    </script>
 </html>

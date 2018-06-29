@@ -39,13 +39,15 @@
                 </div>
             </nav>
 
+            
+            <!-- games grid -->
             </br><h3>My Games</h3></br>
-            <!-- grid of thumbnails -->
             <div id="game-grid">
-                
-                <!-- thumbnails go here -->
+                    <!-- game cards go here -->
             </div>
-        </div> <!-- end of page body -->
+
+
+        </div>
     </body>
 
     <script type="text/javascript">
@@ -126,19 +128,21 @@
                 .appendTo(gameGrid + " #row-" + rowNumber);
             }
             
-            // Add line break between each row
+            // Add See More... link if games overflow past limit (should only be used on home page)
+            if(limit != undefined && Object.keys(games).length > limit) {
+                // It takes up an additional row at the bottom of the grid
+                numberOfRows++;
+
+                $("<div class=\"row\" id=\"row-" + numberOfRows + "\">" + "</div>").appendTo(gameGrid);
+                $("<h4> <a href=\"/games\">See More...</a> </h4>").appendTo(gameGrid + " #row-" + numberOfRows);
+            }
+
+            // Add line break after each row
             console.log("game grid filled, adding line breaks between rows");
             for(var i = 1; i <= numberOfRows; i++) {
                 $("</br>").insertAfter(gameGrid + " #row-" + i);
             }
-
-            // Add link to full Games page if games overflow past limit (should only be used on home page)
-            if(limit != undefined && Object.keys(games).length > limit) {
-                // TODO: make this a row
-                $("<h4> <a href=\"/games\">See More...</a> </div> </h4> <br>").appendTo(gameGrid);
-            }
         }
         
     </script>
-    
 </html>
