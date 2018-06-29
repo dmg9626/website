@@ -36,6 +36,10 @@
 			{
 				"imagePath": "/images/surface-tension/screenshots/bounce.png", 
 				"caption": "Use the Bouncy surface to reach high places"
+			},
+			{
+				"imagePath": "/images/surface-tension/screenshots/slick.png", 
+				"caption": "Slide across the Icy surface to gain extra speed"
 			}
 		],
 		"thumbnail": "/images/surface-tension/thumbnail.png",
