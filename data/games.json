@@ -4,7 +4,7 @@
 		"shortDescription": "An interactive Donald Trump experience",
 		"description": {
 			"main": "You play as the man in charge President Donald Trump. You are \"running for president\" but the Bad Hombres and Biased Liberal Media are trying to take you down! Build those walls and tweet like you've never tweeted before in this adrenaline-pumping side scrolling action game!",
-			"Motivation": "Unity is a very active platform for indie developers, and I wanted to get comfortable working with it by making a simple, fun 2D game. Over the course of development I familiarized myself with the fundamentals of GameObjects/Components and practiced programming game logic, working my way up from simple collision detection, to scripts that play animations when the user presses a button, to data being preserved across scenes. While my code ended up being a little sloppy, it was my first time scripting in Unity and now that I'm comfortable working in that environment, the next game I make will be much better.",
+			"Background": "Unity is a very active platform for indie developers, and I wanted to get comfortable working with it by making a simple, fun 2D game. Over the course of development I familiarized myself with the fundamentals of GameObjects/Components and practiced programming game logic, working my way up from simple collision detection, to scripts that play animations when the user presses a button, to data being preserved across scenes. While my code ended up being a little sloppy, it was my first time scripting in Unity and now that I'm comfortable working in that environment, the next game I make will be much better.",
 			"Github": "https://github.com/dmg9626/This-Is-Trump"
 		},
 		"coverImage": "/images/this-is-trump/screenshots/MainMenu.png",
@@ -27,7 +27,8 @@
 		"name": "Surface Tension",
 		"shortDescription": "A puzzle-platformer centered around manipulating surfaces",
 		"description": {
-			"main": "Surface Tension is a puzzle platform game that relies on adjusting the properties of surfaces to traverse obstacles. The player surveys the entire level before bouncing, sliding and climbing their way around obstacles. Surface Tension relies on fast-paced maneuvers woven with restful periods of planning before diving back into an ever more complex set of movements.",
+			"main": "Surface Tension is a puzzle platform game that relies on manipulating the properties of surfaces to traverse obstacles. The player can make a surface bouncy to jump up high, or coat it in a slick sheet of ice to quickly slide across the surface. These surfaces are used to solve puzzles, like bouncing a block across a bouncy surface to get it up a ledge. Things get interesting when you use these surface types in tandem - often solutions require both speed and height. The gameplay consists of fast-paced maneuvers woven with restful periods of planning; levels challenge the player to think creatively, quickly, or even both at once.",
+			"Background": "This game was developed for the course GMAP 260 (Overview of Computer Gaming) with a team of five, including myself. It was a great experience in applying the object-oriented principles and game programming patterns I've picked up since my previous projects. The codebase we ended up with was far more structured than any of our previous projects - I really pushed to keep our code organized (flexible, scalable, reusable, and functional), finding myself rewriting sections of code multiple times. I'm very proud of the final result; even after the course ended I've found myself adding functionality and improving the code.",
 			"Github": "https://github.com/dmg9626/surface-tension"
 		},
 		"coverImage": "/images/surface-tension/cover.png",
