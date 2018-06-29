@@ -50,86 +50,85 @@
 
     <script type="text/javascript">
 
-        GetGames();
+        // jQuery identifier for game grid <div> element
+        var gameGrid = "#game-grid";
+
+        // Width of each game card (relative to Bootstrap's 12-grid system)
+        var colGridWidth = 4;
+
+        GetGames(gameGrid, colGridWidth);
 
         // Gets list of games from server and passes it to FillGameGrid()
-        function GetGames() {
-
+        function GetGames(gameGrid, colGridWidth) {
             $.ajax({
-                    type: "GET",
-                    url: "/getGames",
-                    dataType: "json",
+                type: "GET",
+                url: "/getGames",
+                dataType: "json",
+                
+                success: function(msg){
+                    console.log(msg);
                     
-                    success: function(msg){
-                        // parse response into json
-                        console.log("games returned from server: " + Object.keys(msg));
-
-                        // fill game grid wtih links to these games
-                        FillGameGrid(msg);
+                    // Check if games response valid
+                    if(msg == null) {
+                        console.log("ERROR: returned list of games is null");
                     }
-                });
-
+                    else {
+                        FillGameGrid(msg, gameGrid, colGridWidth);
+                    }
+                }
+            });
         }
 
         // Fills game grid with thumbnails with links to games returned from server
-        function FillGameGrid(games) {
-        if(games == null) {
-            console.log("ERROR: returned list of games is null");
-        }
-        else {
-            console.log(games);
-
-            // Size of game card relative to Bootstrap's 12-grid system
-            var colGridWidth = 4;
+        function FillGameGrid(games, gameGrid, colGridWidth) {
 
             // Create empty rows to be filled with games
             var numberOfRows = Math.ceil(Object.keys(games).length / (12 / colGridWidth));
-            // console.log("numbef of rows: " + numberOfRows);
-            // console.log("number of games: " + Object.keys(games).length)
+            console.log("number of rows: " + numberOfRows);
+            console.log("number of games: " + Object.keys(games).length)
             
             for(var row = 1; row < numberOfRows + 1; row++) {
-                // console.log("Creating row " + row);
+                console.log("Creating row " + row);
                 
                 // Create row with id = "row-[number]"
                 $("<div class=\"row\" id=\"row-" + row + "\">" + "</div>")
-                .appendTo("#game-grid");
+                .appendTo(gameGrid);
             }
 
-                // iterate through list of game ids
-                for(var i = 0; i < Object.keys(games).length; i++) {
+            // Fill rows with game cards
+            for(var i = 0; i < Object.keys(games).length; i++) {
 
-                    // Get game id from object
-                    var gameId = Object.keys(games)[i];
+                // Get game id from object
+                var gameId = Object.keys(games)[i];
 
-                    // Get game name, thumbnail image, and short description (used as caption)
-                    var name = games[gameId].name;
-                    var thumbnail = games[gameId].thumbnail;
-                    var shortDescription = games[gameId].shortDescription;
+                // Get game name, thumbnail image, and short description (used as caption)
+                var name = games[gameId].name;
+                var thumbnail = games[gameId].thumbnail;
+                var shortDescription = games[gameId].shortDescription;
 
-                    // Get row number by index in games list
-                    var rowNumber = Math.floor(i / (12 / colGridWidth)) + 1;
-                    // console.log("creating " + gameId + " card in row: " + rowNumber);
-                    
-                    // Insert game card into row
-                    $("<div class=\"col-md-" + colGridWidth + "\">" +
-                        "<div class=\"card\">" +
-                            "<a href=\"/game?gameId=" + gameId + "\">" +
-                                "<img src=\"" + thumbnail +  "\" class=\"img-rounded\" alt=\"Lights\" style=\"width:100%\">" +
-                            "</a>" +
-                            "<div class=\"card-body\">" +
-                                "<h4 class=\"card-title\">" + name + "</h4>" +
-                                "<p class=\"card-text\">" + shortDescription + "</p>" +
-                            "</div>" +
-                        "</div>" +
-                    "</div>")
-                    .appendTo("#game-grid #row-" + rowNumber);
-                }
+                // Get row number by index in games list
+                var rowNumber = Math.floor(i / (12 / colGridWidth)) + 1;
+                console.log("creating " + gameId + " card in row: " + rowNumber);
                 
-                // Add line break after each row
-                for(var i = 1; i <= numberOfRows; i++) {
-                    // console.log("adding line break after row " + i);
-                    $("</br>").insertAfter("#game-grid #row-" + i);
-                }
+                // Insert game card into row
+                $("<div class=\"col-md-" + colGridWidth + "\">" +
+                    "<div class=\"card\">" +
+                        "<a href=\"/game?gameId=" + gameId + "\">" +
+                            "<img src=\"" + thumbnail +  "\" class=\"img-rounded\" alt=\"Lights\" style=\"width:100%\">" +
+                        "</a>" +
+                        "<div class=\"card-body\">" +
+                            "<h4 class=\"card-title\">" + name + "</h4>" +
+                            "<p class=\"card-text\">" + shortDescription + "</p>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>")
+                .appendTo(gameGrid + " #row-" + rowNumber);
+            }
+            
+            // Add line break after each row
+            console.log("game grid filled, adding line breaks between rows");
+            for(var i = 1; i <= numberOfRows; i++) {
+                $("</br>").insertAfter(gameGrid + " #row-" + i);
             }
         }
 
