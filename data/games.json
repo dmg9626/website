@@ -71,9 +71,9 @@
 			,
 			"Playing a Turn": {
 				"1": "A turn is played in 2 steps:",
-				"2": "1. Without revealing their card, choose an action to use for this turn.",
-				"3": "2. After performing that action, the player returns their card to the board in the open spot and picks up a different card.",
-				"4": "Note that the player can choose to use an action different from the one on their card, but the opponent can choose to call their bluff. This is where the Wildcard shows its value: you can use it to gain any game knowledge you want without the risk of bluffing."
+				"2": "1. Without revealing your card, choose an action to use for this turn.",
+				"3": "2. After performing that action, place your card on the board in the open spot and pick up a different card.",
+				"4": "Note that you can choose to use an action different from the one on your card, but the opponent can choose to call your bluff. This is where the Wildcard shows its value: you can use it to gain any game knowledge you want without the risk of bluffing."
 			}
 			,
 			"Bluffing": {
