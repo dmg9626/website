@@ -45,5 +45,39 @@
 		"thumbnail": "/images/surface-tension/thumbnail.png",
 		"playable": true,
 		"link": "/games/surface-tension/"
+	},
+
+	"perceive-n-deceive": {
+		"name": "Perceive n’ Deceive",
+		"shortDescription": "A tabletop game of imperfect information",
+		"description": {
+			"main": "The objective of Perceive n’ Deceive is to collect a set of 3 cards of the same color. There are a total of 10 cards, and 9 of them have a color (Red, Blue, Green) and an action (Spy, Psychic,Thief). The Wildcard has no color and is considered to be a Spy, Psychic and Thief. \nA game is played on a board with a 3x3 grid of cards laid face down. The game is round-based, with players taking turns playing actions; who goes first is decided between players or by coin flip.",
+			"Goal": "The main goal of a round is to identify and claim a Set from the array of cards. A Set consists of a card currently in your hand and two cards on the board that are all the same color. A round ends when a Set is called. When a round ends, the setup instructions are followed again to start a new round.\nThe player who claims a Set receives all tokens in the Pot.  The first player to reach 5 tokens wins.",
+			"Playing a Turn": "Players should not reveal their card to their opponent (unless a Psychic is used). In the first phase of a player’s turn, they choose an action to use for this turn. After performing that action, the player returns their card to the board in the open spot and picks up a different card.",
+			"Bluffing": "Additionally, correctly calling an opponent's bluff (i.e. they claim to use a different action than the one on their card) results in a win, while incorrectly calling an opponent’s bluff grants them the tokens in the Pot, plus one more.",
+			"Background": "This game was made for the course GMAP 260 (Overview of Computer Gaming) with a team of four, including myself. Without any flashy digital effects, this was a great experience in fleshing out an interesting game design that engaged players in fun, balanced competition. It was a great exercise in developing deep, interesting game systems based on simple mechanics, a methodology we carried over to our next game in the class, Surface Tension."
+		},
+		"coverImage": "/images/perceive-n-deceive/example board.png",
+		"images": [
+			{
+				"imagePath": "/images/perceive-n-deceive/set.png", 
+				"caption": "The goal is to identify and claim a set of 3 matching cards"
+			},
+			{
+				"imagePath": "/images/perceive-n-deceive/example hand.png", 
+				"caption": "Players can choose to bluff on actions, such as claiming a set. If the opponent calls a bluff, they win the game"
+			},
+			{
+				"imagePath": "/images/perceive-n-deceive/stalemate.png", 
+				"caption": "Sometimes stalemates arise where each player has a card of the same set, and both know where the 3rd card is"
+			},
+			{
+				"imagePath": "/images/perceive-n-deceive/cards.png", 
+				"caption": "Cards the game is played with"
+			}
+		],
+		"thumbnail": "/images/perceive-n-deceive/thumbnail.png",
+		"playable": true,
+		"link": "/games/surface-tension/"
 	}
 }
