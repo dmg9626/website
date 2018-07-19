@@ -144,22 +144,42 @@
             $("#description").html("<h2>Description</h2>");
             
             // Cycle through sections of description
-            for(var item in description) {
-                console.log("adding description " + item);
+            for(var section in description) {
+                console.log("adding description " + section);
 
-                // add description header (ignore for "main" item)
-                if(item != "main" && item != "Github") {
-                    $("#description").append("<h2>" + item + "</h2>");
+                // add description header (ignore for "main" section)
+                if(section != "main" && section != "Github") {
+                    $("#description").append("<br><h2>" + section + "</h2>");
                 }
                 
                 // Github link
-                if(item == "Github") {
-                    $("#description").append("<h3>Github: <a href=\"" + description[item] + "\">" + description[item] + "</a></h3>");
+                if(section == "Github") {
+                    $("#description").append("<h3>Github: <a href=\"" + description[section] + "\">" + description[section] + "</a></h3>");
                     continue;
                 }
                 // add description body
-                $("#description").append("<p>" + description[item] + "</p><hr/>");
+                // $("#description").append("<p>" + description[section] + "</p><hr/>");
+
+                console.log("Filling out paragraphs of section " + section + ":");
+
+                $("#description").append("<p>");
+
+                // Cycle through each paragraph of section
+                for(var paragraph in description[section]) {
+
+                    // Get text body of this section
+                    var sectionBody = description[section][paragraph];
+
+                    $("#description").append(sectionBody + "<br><br>");
+                    if(description[section][paragraph] == null) {
+                        console.log("Next paragraph null: " + description[section][paragraph]);
+                    }
+                }
+                
+                // Add horizontal rule between sections
+                $("#description").append("<hr>");
             }
+            $("#description").append("</p>");
             
             // Fill link to game if playable
             if(playable) {

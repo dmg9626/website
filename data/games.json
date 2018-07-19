@@ -3,8 +3,12 @@
 		"name": "This Is Trump",
 		"shortDescription": "An interactive Donald Trump experience",
 		"description": {
-			"main": "You play as the man in charge President Donald Trump. You are \"running for president\" but the Bad Hombres and Biased Liberal Media are trying to take you down! Build those walls and tweet like you've never tweeted before in this adrenaline-pumping side scrolling action game!",
-			"Background": "Unity is a very active platform for indie developers, and I wanted to get comfortable working with it by making a simple, fun 2D game. Over the course of development I familiarized myself with the fundamentals of GameObjects/Components and practiced programming game logic, working my way up from simple collision detection, to scripts that play animations when the user presses a button, to data being preserved across scenes. While my code ended up being a little sloppy, it was my first time scripting in Unity and now that I'm comfortable working in that environment, the next game I make will be much better.",
+			"main": {
+				"1": "You play as the man in charge President Donald Trump. You are \"running for president\" but the Bad Hombres and Biased Liberal Media are trying to take you down! Build those walls and tweet like you've never tweeted before in this adrenaline-pumping side scrolling action game!"
+			},
+			"Background": {
+				"1": "Unity is a very active platform for indie developers, and I wanted to get comfortable working with it by making a simple, fun 2D game. Over the course of development I familiarized myself with the fundamentals of GameObjects/Components and practiced programming game logic, working my way up from simple collision detection, to scripts that play animations when the user presses a button, to data being preserved across scenes. While my code ended up being a little sloppy, it was my first time scripting in Unity and now that I'm comfortable working in that environment, the next game I make will be much better."
+			},
 			"Github": "https://github.com/dmg9626/This-Is-Trump"
 		},
 		"coverImage": "/images/this-is-trump/screenshots/MainMenu.png",
@@ -27,8 +31,12 @@
 		"name": "Surface Tension",
 		"shortDescription": "A puzzle-platformer centered around manipulating surfaces",
 		"description": {
-			"main": "Surface Tension is a puzzle platform game that relies on manipulating the properties of surfaces to traverse obstacles. The player can make a surface bouncy to jump up high, or coat it in a slick sheet of ice to quickly slide across the surface. These surfaces are used to solve puzzles, like bouncing a block across a bouncy surface to get it up a ledge. Things get interesting when you use these surface types in tandem - often solutions require both speed and height. The gameplay consists of fast-paced maneuvers woven with restful periods of planning; levels challenge the player to think creatively, quickly, or even both at once.",
-			"Background": "This game was developed for the course GMAP 260 (Overview of Computer Gaming) with a team of five, including myself. It was a great experience in applying the object-oriented principles and game programming patterns I've picked up since my previous projects. The codebase we ended up with was far more structured than any of our previous projects - I really pushed to keep our code organized (flexible, scalable, reusable, and functional), finding myself rewriting sections of code multiple times. I'm very proud of the final result; even after the course ended I've found myself adding functionality and improving the code.",
+			"main": {
+				"1": "Surface Tension is a puzzle platform game that relies on manipulating the properties of surfaces to traverse obstacles. The player can make a surface bouncy to jump up high, or coat it in a slick sheet of ice to quickly slide across the surface. These surfaces are used to solve puzzles, like bouncing a block across a bouncy surface to get it up a ledge. Things get interesting when you use these surface types in tandem - often solutions require both speed and height. The gameplay consists of fast-paced maneuvers woven with restful periods of planning; levels challenge the player to think creatively, quickly, or even both at once."
+			},
+			"Background":  {
+				"1": "This game was developed for the course GMAP 260 (Overview of Computer Gaming) with a team of five, including myself. It was a great experience in applying the object-oriented principles and game programming patterns I've picked up since my previous projects. The codebase we ended up with was far more structured than any of our previous projects - I really pushed to keep our code organized (flexible, scalable, reusable, and functional), finding myself rewriting sections of code multiple times. I'm very proud of the final result; even after the course ended I've found myself adding functionality and improving the code."
+			},
 			"Github": "https://github.com/dmg9626/surface-tension"
 		},
 		"coverImage": "/images/surface-tension/cover.png",
@@ -51,11 +59,31 @@
 		"name": "Perceive n’ Deceive",
 		"shortDescription": "A tabletop game of imperfect information",
 		"description": {
-			"main": "The objective of Perceive n’ Deceive is to collect a set of 3 cards of the same color. There are a total of 10 cards, and 9 of them have a color (Red, Blue, Green) and an action (Spy, Psychic,Thief). The Wildcard has no color and is considered to be a Spy, Psychic and Thief. \nA game is played on a board with a 3x3 grid of cards laid face down. The game is round-based, with players taking turns playing actions; who goes first is decided between players or by coin flip.",
-			"Goal": "The main goal of a round is to identify and claim a Set from the array of cards. A Set consists of a card currently in your hand and two cards on the board that are all the same color. A round ends when a Set is called. When a round ends, the setup instructions are followed again to start a new round.\nThe player who claims a Set receives all tokens in the Pot.  The first player to reach 5 tokens wins.",
-			"Playing a Turn": "Players should not reveal their card to their opponent (unless a Psychic is used). In the first phase of a player’s turn, they choose an action to use for this turn. After performing that action, the player returns their card to the board in the open spot and picks up a different card.",
-			"Bluffing": "Additionally, correctly calling an opponent's bluff (i.e. they claim to use a different action than the one on their card) results in a win, while incorrectly calling an opponent’s bluff grants them the tokens in the Pot, plus one more.",
-			"Background": "This game was made for the course GMAP 260 (Overview of Computer Gaming) with a team of four, including myself. Without any flashy digital effects, this was a great experience in fleshing out an interesting game design that engaged players in fun, balanced competition. It was a great exercise in developing deep, interesting game systems based on simple mechanics, a methodology we carried over to our next game in the class, Surface Tension."
+			"main": {
+				"1": "The objective of Perceive n’ Deceive is to collect a set of 3 cards of the same color. There are a total of 10 cards: 9 of them have a color (Red, Blue, Green) and an action (Spy, Psychic,Thief). The Wildcard is considered to be a Spy, Psychic and Thief; however, it has no color and cannot form a set.",
+				"2": "A game is played on a board with a 3x3 grid of cards laid face down. The game is round-based, with players taking turns playing actions; who goes first is decided between players or by coin flip."
+			}
+			,
+			"Goal": {
+				"1": "The main goal of a round is to identify and claim a Set from the array of cards in order to win tokens (the Pot starts at 1 each round). A Set consists of a card currently in your hand and two cards on the board that are all the same color. A round ends when a Set is called; the winner claims the Pot and the players start a new round.",
+				"2": "The player who claims a Set receives all tokens in the Pot. The first player to reach 5 tokens wins."
+			}
+			,
+			"Playing a Turn": {
+				"1": "A turn is played in 2 steps:",
+				"2": "1. Without revealing their card, choose an action to use for this turn.",
+				"3": "2. After performing that action, the player returns their card to the board in the open spot and picks up a different card.",
+				"4": "Note that the player can choose to use an action different from the one on their card, but the opponent can choose to call their bluff. This is where the Wildcard shows its value: you can use it to gain any game knowledge you want without the risk of bluffing."
+			}
+			,
+			"Bluffing": {
+				"1": "Correctly calling an opponent's bluff (i.e. they claim to use a different action than the one on their card) results in a win, while incorrectly calling an opponent’s bluff grants them the tokens in the Pot, plus one more."
+			}
+			,
+			"Background": {
+				"1": "This game was made for the course GMAP 260 (Overview of Computer Gaming) with a team of four, including myself. Without any flashy digital effects, this was a great experience in fleshing out an interesting game design that engaged players in fun, balanced competition. We really had game theory in mind while balancing this game through playtests; as we broke down and analyzed our usual playstyles, we developed a game whose rounds slowly unravel into a myriad of mind games based on incremental, imperfect information.",
+				"2": "It was a great exercise in developing deep, interesting game systems based on simple mechanics, a methodology we carried over to our next game in the class: Surface Tension."
+			}
 		},
 		"coverImage": "/images/perceive-n-deceive/example board.png",
 		"images": [
@@ -65,19 +93,17 @@
 			},
 			{
 				"imagePath": "/images/perceive-n-deceive/example hand.png", 
-				"caption": "Players can choose to bluff on actions, such as claiming a set. If the opponent calls a bluff, they win the game"
+				"caption": "Players can choose to bluff on actions, or when claiming a set. If the opponent calls a bluff, they win the game"
 			},
 			{
 				"imagePath": "/images/perceive-n-deceive/stalemate.png", 
-				"caption": "Sometimes stalemates arise where each player has a card of the same set, and both know where the 3rd card is"
+				"caption": "Sometimes stalemates arise where each player has a card of the same set, and both know where the 3rd card is. A player must then claim to identify a different set on the board, and the opponent can choose to call their bluff"
 			},
 			{
 				"imagePath": "/images/perceive-n-deceive/cards.png", 
-				"caption": "Cards the game is played with"
+				"caption": "There are 3 blue, green, and red cards that can form a set or perform actions to gain board knowledge. The wildcard can perform any action, but cannot be used to form a set"
 			}
 		],
-		"thumbnail": "/images/perceive-n-deceive/thumbnail.png",
-		"playable": true,
-		"link": "/games/surface-tension/"
+		"thumbnail": "/images/perceive-n-deceive/thumbnail.png"
 	}
 }
