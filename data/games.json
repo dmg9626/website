@@ -60,7 +60,7 @@
 		"shortDescription": "A tabletop game of imperfect information",
 		"description": {
 			"main": {
-				"1": "The objective of Perceive n’ Deceive is to collect a set of 3 cards of the same color. There are a total of 10 cards, and 9 of them have a color (Red, Blue, Green) and an action (Spy, Psychic,Thief). The Wildcard has no color and is considered to be a Spy, Psychic and Thief.",
+				"1": "The objective of Perceive n’ Deceive is to collect a set of 3 cards of the same color. There are a total of 10 cards: 9 of them have a color (Red, Blue, Green) and an action (Spy, Psychic,Thief). The Wildcard is considered to be a Spy, Psychic and Thief; however, it has no color and cannot form a set.",
 				"2": "A game is played on a board with a 3x3 grid of cards laid face down. The game is round-based, with players taking turns playing actions; who goes first is decided between players or by coin flip."
 			}
 			,
@@ -73,7 +73,7 @@
 				"1": "A turn is played in 2 steps:",
 				"2": "1. Without revealing their card, choose an action to use for this turn.",
 				"3": "2. After performing that action, the player returns their card to the board in the open spot and picks up a different card.",
-				"4": "Note that the player can choose to use an action different from the one on their card, but the opponent can choose to call their bluff."
+				"4": "Note that the player can choose to use an action different from the one on their card, but the opponent can choose to call their bluff. This is where the Wildcard shows its value: you can use it to gain any game knowledge you want without the risk of bluffing."
 			}
 			,
 			"Bluffing": {
@@ -81,7 +81,8 @@
 			}
 			,
 			"Background": {
-				"1": "This game was made for the course GMAP 260 (Overview of Computer Gaming) with a team of four, including myself. Without any flashy digital effects, this was a great experience in fleshing out an interesting game design that engaged players in fun, balanced competition. It was a great exercise in developing deep, interesting game systems based on simple mechanics, a methodology we carried over to our next game in the class, Surface Tension."
+				"1": "This game was made for the course GMAP 260 (Overview of Computer Gaming) with a team of four, including myself. Without any flashy digital effects, this was a great experience in fleshing out an interesting game design that engaged players in fun, balanced competition. We really had game theory in mind while balancing this game through playtests; as we broke down and analyzed our usual playstyles, we developed a game whose rounds slowly unravel into a myriad of mind games based on incremental, imperfect information.",
+				"2": "It was a great exercise in developing deep, interesting game systems based on simple mechanics, a methodology we carried over to our next game in the class: Surface Tension."
 			}
 		},
 		"coverImage": "/images/perceive-n-deceive/example board.png",
@@ -92,7 +93,7 @@
 			},
 			{
 				"imagePath": "/images/perceive-n-deceive/example hand.png", 
-				"caption": "Players can choose to bluff on actions, such as claiming a set. If the opponent calls a bluff, they win the game"
+				"caption": "Players can choose to bluff on actions, or when claiming a set. If the opponent calls a bluff, they win the game"
 			},
 			{
 				"imagePath": "/images/perceive-n-deceive/stalemate.png", 
@@ -100,7 +101,7 @@
 			},
 			{
 				"imagePath": "/images/perceive-n-deceive/cards.png", 
-				"caption": "There are 3 blue, green, and red cards that can be used to form a set or gain board knowledge; the wildcard can perform anny action but cannot be used to form a set"
+				"caption": "There are 3 blue, green, and red cards that can form a set or perform actions to gain board knowledge. The wildcard can perform any action, but cannot be used to form a set"
 			}
 		],
 		"thumbnail": "/images/perceive-n-deceive/thumbnail.png"
