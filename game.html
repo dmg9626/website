@@ -84,7 +84,9 @@
             <div class="game-description">
                 <br>
                 <div class="jumbotron">
-                    <div class="game-description-text" id="description"></div>
+                    <div class="game-description-text" id="description">
+                        <h2>Description</h2>
+                    </div>
                     <br>
                 </div>
             </div>
@@ -141,25 +143,20 @@
             var coverImage = json["coverImage"];
             var playable = json["playable"];
             
+            // Fill screenshots in thumbnail-grid
+            console.log("generating screenshots");
             GenerateScreenshots(json);
             
-            // Fill name
+            // Fill name, short description, and cover image
             $("#name").html("<h1>" + name + "</h1>");
-
-            // Fill short description
             $("#shortDescription").html("<h5> " + shortDescription + "</h5>");
-
-            // Fill cover image
             $("#cover-image").html("<img src=\"" + coverImage + "\" class=\"rounded mx-auto d-block\">" + "<br/>");
-            
-            // // Fill description (TODO: improve the way description headers are handled)
-            $("#description").html("<h2>Description</h2>");
             
             // Cycle through sections of description
             for(var section in description) {
                 console.log("adding description " + section);
 
-                // add description header (ignore for "main" section)
+                // Add description header (TODO: parse main section just like others)
                 if(section != "main" && section != "Github") {
                     $("#description").append("<br><h2>" + section + "</h2>");
                 }
@@ -169,22 +166,19 @@
                     $("#description").append("<h3>Github: <a href=\"" + description[section] + "\">" + description[section] + "</a></h3>");
                     continue;
                 }
-                // add description body
-                // $("#description").append("<p>" + description[section] + "</p><hr/>");
-
+                
+                // Create section element
                 console.log("Filling out paragraphs of section " + section + ":");
-
                 $("#description").append("<p>");
-
+                
                 // Cycle through each paragraph of section
-                for(var paragraph in description[section]) {
+                for(var item in description[section]) {
+                    // Append paragraph to description
+                    var paragraph = description[section][item];
+                    $("#description").append(paragraph + "<br><br>");
 
-                    // Get text body of this section
-                    var sectionBody = description[section][paragraph];
-
-                    $("#description").append(sectionBody + "<br><br>");
-                    if(description[section][paragraph] == null) {
-                        console.log("Next paragraph null: " + description[section][paragraph]);
+                    if(description[section][item] == null) {
+                        console.log("Next paragraph null: " + description[section][item]);
                     }
                 }
                 
@@ -213,7 +207,6 @@
 
         // Generates screenshots from response on page
         function GenerateScreenshots(json) {
-            console.log("generating screenshots");
             // get images from json
             var images = json["images"];
             console.log(images);
@@ -243,7 +236,7 @@
                 $("<div class=\"col-md-4\">" +
                     "<figure class=\"figure\">" +
                         "<a href=\"" + imagePath + "\">" +
-                            "<img src=\"" + imagePath + "\" class=\"figure-img img-fluid rounded\" alt=\"A generic square placeholder image with rounded corners in a figure.\">" +
+                            "<img src=\"" + imagePath + "\" class=\"figure-img img-fluid rounded\">" +
                         "</a>" +
                         "<figcaption class=\"figure-caption\">" + caption + "</figcaption>" +
                     "</figure>" +  
