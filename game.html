@@ -60,13 +60,22 @@
             <br/>
 
             <!-- link to playable game -->
-            <div class="row" id="game-link">
-                <br><br><br>
+            <div class="row text-center" id="game-link">
+                <div class="col-md-12">
+                    <a href="#">
+                        <button type="button" class="btn btn-primary btn-lg">Play game here!</button>
+                    </a>
+                </div>
             </div>
+            <br>
 
             
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Screenshots</h3>
+                </div>
+            </div>
             <!-- Grid of game screenshots -->
-            <h3>Screenshots</h3> <br>
             <div class="row" id="thumbnail-grid">
             </div>
             
@@ -188,16 +197,15 @@
             if(playable) {
                 var link = json["link"];
                 console.log("game is playable, adding link: " + link);
-                $("#game-link").append(
-                    "<h3>Play game "
-                        + "<b><a href=\"" + link + "\">here!</a></b>" + "</h3>"
-                    + "<hr>");
+                var href = $("#game-link a")[0];
+                href.setAttribute("href", link);
             }
             else {
-                // console.log("game not playable, hiding game-link section");
+                console.log("game not playable, hiding game-link section");
 
                 // empty contents of game link div
-                $("#game-link").empty();
+                var gamelink = $("#game-link");
+                gamelink.empty();
             }
             
         }
