@@ -17,15 +17,15 @@
             "thumbnail": "images/about/ghost in the shell.jpg",
             "caption": "Don't be misled by the tactical lingerie - it's actually a fantastic sci-fi about AI and the concept of \"self\"",
             "link": "https://www.pcgamesn.com/ghost-in-the-shell-stand-alone-complex-first-assault-online/ghost-in-the-shell-stand-alone-complex-first-assault-online-shutting-down"
-        },
-
-        "currently-enjoying": {
-            "super-metroid_": {
-                "name": "Super Metroid",
-                "thumbnail": "images/about/super metroid.jpg",
-                "caption": "The dark tone of the intro sequence sets this apart from other Nintendo experiences. Beautiful effects and refined exploration keep me spelunking through the planet Zebes.",
-                "link": "http://www.nintendolife.com/reviews/vc/super_metroid_snes"
-            }
+        }
+    },
+    
+    "currently-enjoying": {
+        "super-metroid_": {
+            "name": "Super Metroid",
+            "thumbnail": "images/about/super metroid.jpg",
+            "caption": "The dark tone of the intro sequence sets this apart from other Nintendo experiences. Beautiful effects and refined exploration keep me spelunking through the planet Zebes.",
+            "link": "http://www.nintendolife.com/reviews/vc/super_metroid_snes"
         }
     }
 }

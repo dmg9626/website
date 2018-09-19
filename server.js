@@ -143,3 +143,14 @@ app.get('/getGameData', function(req, res){
 		res.send(JSON.stringify(json));
 	}
 });
+
+app.get('/getAboutData', function(req, res){
+	console.log("requesting about.json");
+	
+	// load and parse games json
+	var about = fs.readFileSync("data/about.json");
+	var aboutJson = JSON.parse(about);
+	console.log(aboutJson);
+
+	res.send(aboutJson);
+});
