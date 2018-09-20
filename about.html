@@ -59,23 +59,10 @@
                             <!-- Recently enjoyed -->
                             <h2>I've recently enjoyed:</h2> <br>
 
-                            <div class="row">
-
-                                <!-- Metroid Prime -->
-                                <div class="col-md-4">
-                                    <div class="thumbnail">
-                                        <a href="https://kotaku.com/metroid-prime-the-kotaku-review-1764050288" target="_blank">
-                                            <img src="images/about/metroid prime.jpg" class="rounded" style="width:100%"
-                                            title="This game does a great job of delivering narrative through the environment"/>
-                                        </a>
-
-                                        <div class="caption text-center">
-                                            <p>Metroid Prime</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Prey -->
+                            <div class="row" id="enjoyed">
+                                <!-- game cards go here: -->
+                                
+                                <!-- Example game card:
                                 <div class="col-md-4">
                                     <div class="thumbnail">
                                         <a href="https://www.rockpapershotgun.com/2017/05/09/prey-review/" target="_blank">
@@ -87,41 +74,15 @@
                                             <p>Prey</p>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Ghost in the Shell -->
-                                <div class="col-md-4">
-                                    <div class="thumbnail">
-                                        <a href="https://www.pcgamesn.com/ghost-in-the-shell-stand-alone-complex-first-assault-online/ghost-in-the-shell-stand-alone-complex-first-assault-online-shutting-down" target="_blank">
-                                            <img src="images/about/ghost in the shell.jpg" class="rounded" style="width:100%" 
-                                            title="Don't be misled by the tactical lingerie - it's actually a fantastic sci-fi about AI and the concept of &quot;self&quot;"/>
-                                        </a>
-                                            
-                                        <div class="caption text-center">
-                                            <p>Ghost in the Shell: Stand Alone Complex</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> -->
                             </div>
                             <hr>
                             
                             <!-- Currently enjoying -->
                             <h2>I'm currently enjoying:</h2> <br>
-                            <div class="row">
+                            <div class="row" id="enjoying">
 
-                                <!-- Super Metroid -->
-                                <div class="col-md-4">
-                                    <div class="thumbnail">
-                                        <a href="http://www.nintendolife.com/reviews/vc/super_metroid_snes" target="_blank">
-                                            <img src="images/about/super metroid.jpg" class="rounded" style="width:100%"
-                                            title="The dark tone of the intro sequence sets this apart from other Nintendo experiences. Beautiful effects and refined exploration keep me spelunking through the planet Zebes."/>
-                                        </a>
-
-                                        <div class="caption text-center">
-                                            <p>Super Metroid</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- game cards go here: -->
 
                             </div>
                     </div>
@@ -130,4 +91,73 @@
             </div>
         </div>
     </body>
+
+    <script>
+        GetData();
+        function GetData()
+        {
+            $.ajax({
+                type: "GET",
+                url: "/getAboutData",
+                dataType: "json",
+                
+                success: function(msg){
+                    console.log(msg);
+                    
+                    // Check if games response valid
+                    if(msg == null) {
+                        console.log("ERROR: returned list of games is null");
+                    }
+                    else {
+                        FillAboutData(msg);
+                    }
+                }
+            });
+        }
+
+        function FillAboutData(json)
+        {
+            // fill Currently Enjoying section
+            var currentlyEnjoying = json["currently-enjoying"];
+            var currentlyEnjoyingDiv = $("#enjoying");
+            FillEnjoyingData(currentlyEnjoying, currentlyEnjoyingDiv);
+            
+            // fill Recently Enjoyed section
+            var recentlyEnjoyedDiv = $("#enjoyed");
+            var recentlyEnjoyed = json["recently-enjoyed"];
+            console.log(recentlyEnjoyed);
+            FillEnjoyingData(recentlyEnjoyed, recentlyEnjoyedDiv);
+        }
+
+        function FillEnjoyingData(enjoying, div)
+        {
+            // Empty beforehand (todo: remove this )
+            div.empty();
+            // Iterate through items in json
+            for(var item in enjoying) {
+                console.log("filling card for " + item);
+                
+                // Get attributes
+                var name = enjoying[item].name;
+                var thumbnail = enjoying[item].thumbnail;
+                var link = enjoying[item].link;
+                var caption = enjoying[item].caption;
+                
+                // Create card
+                $("<div class=\"col-md-4\">" +
+                    "<div class=\"thumbnail\">" +
+                        "<a href=\"" + link + "\" target=\"_blank\">" +
+                            "<img src=\"" + thumbnail + "\" class=\"rounded\" style=\"width:100%\"" +
+                            "title=\"" + caption + "\"/>" +
+                        "</a>" +
+
+                        "<div class=\"caption text-center\">" +
+                            "<p>" + name + "</p>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>"
+                ).appendTo(div);
+            }
+        }
+    </script>
 </html>
