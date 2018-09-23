@@ -3,19 +3,19 @@
         "metroid-prime_": {
             "name": "Metroid Prime",
             "thumbnail": "images/about/metroid prime.jpg",
-            "caption": "This game does a great job of delivering narrative through the environment",
+            "caption": "This game does a stellar job of delivering narrative through the environment.",
             "link": "https://kotaku.com/metroid-prime-the-kotaku-review-1764050288"
         },
         "prey_": {
             "name": "Prey",
             "thumbnail": "images/about/prey.jpg",
-            "caption": "A fantastic homage to System Shock. I've just finished the main game and I'm excited to dive into the Mooncrash expansion",
+            "caption": "A fantastic homage to System Shock. I've just finished the main game and I'm excited to dive into the Mooncrash expansion.",
             "link": "https://www.rockpapershotgun.com/2017/05/09/prey-review/"
         },
         "ghost-in-the-shell_": {
             "name": "Ghost in the Shell",
             "thumbnail": "images/about/ghost in the shell.jpg",
-            "caption": "Don't be misled by the tactical lingerie - it's actually a fantastic sci-fi about AI and the concept of \"self\"",
+            "caption": "Don't be misled by the \"tactical lingerie\" - it's actually a fantastic sci-fi about AI and the concept of self.",
             "link": "https://www.pcgamesn.com/ghost-in-the-shell-stand-alone-complex-first-assault-online/ghost-in-the-shell-stand-alone-complex-first-assault-online-shutting-down"
         }
     },
