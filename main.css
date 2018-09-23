@@ -34,3 +34,8 @@ body {
   font-size: 20px;
   font-family: 'Cabin', sans-serif;
 }
+
+.btn-primary {
+  background-color: #5376f1;
+  border-color: #5376f1;
+}
