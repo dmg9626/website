@@ -62,19 +62,19 @@
                             <div class="row" id="enjoyed">
                                 <!-- game cards go here: -->
                                 
-                                <!-- Example game card:
+                                <!-- Example game card: -->
+                                <!-- 
                                 <div class="col-md-4">
-                                    <div class="thumbnail">
-                                        <a href="https://www.rockpapershotgun.com/2017/05/09/prey-review/" target="_blank">
-                                            <img src="images/about/prey.jpg" class="rounded" style="width:100%"
-                                            title="A fantastic homage to System Shock. I've just finished the main game and I'm excited to dive into the Mooncrash expansion"/>
-                                        </a>
-
-                                        <div class="caption text-center">
-                                            <p>Prey</p>
+                                    <div class="card" style="width:100%">
+                                        <img class="card-img-top" src="images/about/prey.jpg" alt="Card image">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <small>Caption.</small><br><br>
+                                            <a href="#link" class="btn btn-secondary">See More</a>
                                         </div>
                                     </div>
                                 </div> -->
+
                             </div>
                             <hr>
                             
@@ -145,14 +145,12 @@
                 
                 // Create card
                 $("<div class=\"col-md-4\">" +
-                    "<div class=\"thumbnail\">" +
-                        "<a href=\"" + link + "\" target=\"_blank\">" +
-                            "<img src=\"" + thumbnail + "\" class=\"rounded\" style=\"width:100%\"" +
-                            "title=\"" + caption + "\"/>" +
-                        "</a>" +
-
-                        "<div class=\"caption text-center\">" +
-                            "<p>" + name + "</p>" +
+                    "<div class=\"card\" style=\"width:100%\">" +
+                        "<img class=\"card-img-top\" src=\"" + thumbnail + "\" alt=\"Card image\">" +
+                        "<div class=\"card-body\">" +
+                            "<h4 class=\"card-title\">" + name + "</h4>" +
+                            "<small>" + caption + "</small><br><br>" +
+                            "<a href=\"" + link + "\" class=\"btn btn-primary\">See More</a>" +
                         "</div>" +
                     "</div>" +
                 "</div>"
