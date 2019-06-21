@@ -1,5 +1,6 @@
 {
     "recently-enjoyed": {
+
         "metroid-prime_": {
             "name": "Metroid Prime",
             "thumbnail": "images/about/metroid prime.jpg",
@@ -17,15 +18,22 @@
             "thumbnail": "images/about/ghost in the shell.jpg",
             "caption": "Don't be misled by the \"tactical lingerie\" - it's a fantastic sci-fi about sociopolitical manipulation through social media (an advanced subject considering its 2002 debut).",
             "link": "https://www.pcgamesn.com/ghost-in-the-shell-stand-alone-complex-first-assault-online/ghost-in-the-shell-stand-alone-complex-first-assault-online-shutting-down"
-        }
-    },
-    
-    "currently-enjoying": {
+        },
         "super-metroid_": {
             "name": "Super Metroid",
             "thumbnail": "images/about/super metroid.jpg",
             "caption": "The dark tone of the intro sequence sets this apart from other Nintendo experiences. Beautiful effects and refined exploration keep me spelunking through the planet Zebes.",
             "link": "http://www.nintendolife.com/reviews/vc/super_metroid_snes"
+        }
+    },
+    
+    "currently-enjoying": {
+
+        "stick-of-truth_": {
+            "name": "South Park: The Stick of Truth",
+            "thumbnail": "images/about/stick-of-truth.jpg",
+            "caption": "I just remembered my favorite show made a game. The humour is spot on with the show and I'm loving every second of it.",
+            "link": "https://www.rockpapershotgun.com/2016/07/18/south-park-stick-of-truth-archer-rpg/"
         }
     }
 }
