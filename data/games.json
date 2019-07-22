@@ -1,4 +1,32 @@
 {
+	"its-haunt-time": {
+		"name": "It's Haunt Time!",
+		"shortDescription": "A cute spook-em-up mobile game",
+		"description": {
+			"main": {
+				"1": "It's Haunt Time! is a cute spook-em-up puzzle game designed for mobile devices. You play as Hatto, a ghost trying his best to win the Scare Championships. Help Hatto scare the human; you'll have to navigate his house, interacting with the environment to overcome ephemeral-repelling obstacles like fans, salt, and even a scary cat. Do your best and go for the gold!"
+			},
+			"Background": {
+				"1": "This game was developed in our Games Workshop class as a vertical-slice prototype, with more levels/features planned for the future. As lead programmer, I created a flexible system for scripting the interactable objects in the game, as well as setting up the Unity -> Android/WebGL build pipeline and touch controls. I applied what I learned about software design patterns and ended up developing a very clean, robust codebase that I'd consider using in future projects.",
+				"2": "One of the biggest challenges in this game was designing intuitive mechanics and interactions for the player. We strived to avoid falling back on tutorials to direct the player; instead, we wanted the gameplay to teach the player how to play."
+			},
+			"Github": "https://github.com/rushweigelt/itsHauntTime"
+		},
+		"coverImage": "/images/this-is-trump/screenshots/MainMenu.png",
+		"images": [
+			{
+				"imagePath": "/images/this-is-trump/screenshots/RaiseAWall.png", 
+				"caption": "Raise a Wall to keep out the Bad Hombres!"
+			},
+			{
+				"imagePath": "/images/this-is-trump/screenshots/ThrowTweets.png", 
+				"caption": "Throw Tweets to discredit the Biased Liberal Media!"
+			}
+		],
+		"thumbnail": "/images/this-is-trump/TrumpHead.png",
+		"playable": true,
+		"link": "/games/this-is-trump/"
+	},
 	"this-is-trump": {
 		"name": "This Is Trump",
 		"shortDescription": "An interactive Donald Trump experience",
